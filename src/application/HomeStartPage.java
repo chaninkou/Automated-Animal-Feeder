@@ -1,5 +1,6 @@
 package application;
 
+import javafx.geometry.Pos;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -12,23 +13,23 @@ public class HomeStartPage extends StackPane{
 	
 	public HomeStartPage() {
 		// Getting the path to the image
-		Image image = new Image("dataBase/backgroundPicture/bobbyHome.jpg");
+		Image image = new Image("dataBase/backgroundPicture/bobbyHome.jpg", 1000, 1000, true, true);
 		
 		// Setting the image view
 		ImageView imageView = new ImageView(image);
-		
-		Label label = new Label();
-		label.setGraphic(imageView);
-		label.setMinHeight(700);
-		label.setMinWidth(800);
+		imageView.setRotate(imageView.getRotate() + 90); 
 		
 		
-		message.setId("");
+		Label message = new Label("Welcome, press anywhere to start!");
 		
-		VBox vbox = new VBox();
-		vbox.getChildren().add(message);
+		VBox pane = new VBox();
+		// Make this center
+		pane.setAlignment(Pos.CENTER);
+		pane.getChildren().add(message);
+		
 
-		getChildren().addAll(imageView,vbox);
+		getChildren().addAll(imageView,pane);
+		
 	
 	}
 }

@@ -14,7 +14,7 @@ public class Main extends Application {
 			// Calling the home page
 			HomeStartPage homePage = new HomeStartPage();
 			
-			Scene scene = new Scene(homePage,800,700);
+			Scene scene = new Scene(homePage,1000,500);
 			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			
 			
