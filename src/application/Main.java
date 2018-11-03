@@ -24,6 +24,8 @@ public class Main extends Application {
 			// Calling the method for the on click to the menu page
 			homePageController(menuPage, scene, homePage);
 			
+			menuController(menuPage, scene, homePage);
+			
 			
 			primaryStage.setScene(scene);
 			primaryStage.setWidth(1100);
@@ -53,4 +55,10 @@ public class Main extends Application {
 		});
 		
 	}
+	
+	public void menuController(MenuPage menuPage, Scene scene, HomeStartPage homePage){
+			menuPage.getToHomePage().setOnAction(e -> scene.setRoot(homePage));
+	}
+
+	
 }

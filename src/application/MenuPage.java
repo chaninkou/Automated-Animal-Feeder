@@ -8,11 +8,15 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Text;
 
 public class MenuPage extends BorderPane{
 	private Button refill;
 	private Button storage;
 	private Button feedingLog;
+	private Button setting;
+	private Button toHomePage;
+	
 	
 	
 	public MenuPage(){
@@ -31,11 +35,28 @@ public class MenuPage extends BorderPane{
 
 		getChildren().add(pane);
 		
-		// Calling the main Menu
-		mainMenu();
+		// Calling the top Menu
+		topPart();
+		
+		// Calling the bottom Menu
+		bottomPart();
 	}
 	
-	public void mainMenu(){
+	public void topPart(){
+		HBox hbox = new HBox();
+		toHomePage = new Button("Back");
+		toHomePage.setId("back");
+	
+		
+		hbox.setPadding(new Insets(30, 0, 0, 50));
+		hbox.setSpacing(100);
+		hbox.setAlignment(Pos.TOP_LEFT);
+		
+		hbox.getChildren().addAll(toHomePage);
+		setTop(hbox);
+	}
+	
+	public void bottomPart(){
 		// Creating a HBox
 		HBox hbox = new HBox();
 		
@@ -51,6 +72,10 @@ public class MenuPage extends BorderPane{
 		feedingLog = new Button("FeedLog");
 		feedingLog.setId("feedingLog");
 		
+		// Making a feeding log button
+		setting = new Button("Setting");
+		setting.setId("setting");
+		
 		hbox.setPadding(new Insets(0,0,30,0));
 		hbox.setSpacing(50);
 		
@@ -58,9 +83,16 @@ public class MenuPage extends BorderPane{
 		hbox.setAlignment(Pos.CENTER);
 		
 		// Adding all the children
-		hbox.getChildren().addAll(refill,storage,feedingLog);
+		hbox.getChildren().addAll(refill,storage,feedingLog, setting);
 		
 		// Need this to set it to the bottom of the GUI
 		setBottom(hbox);
 	}
+	
+	
+	// Returning the value of toHomePage
+    public Button getToHomePage(){
+        return toHomePage;
+    }
+	
 }
