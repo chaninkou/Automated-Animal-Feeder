@@ -13,19 +13,28 @@ public class HomeStartPage extends StackPane{
 	
 	public HomeStartPage() {
 		// Getting the path to the image
-		Image image = new Image("dataBase/backgroundPicture/bobbyHome.jpg", 1000, 1000, true, true);
+		Image image = new Image("dataBase/backgroundPicture/homePage.jpg");
 		
 		// Setting the image view
 		ImageView imageView = new ImageView(image);
-		imageView.setRotate(imageView.getRotate() + 90); 
 		
+		imageView.setFitHeight(620);
 		
+		imageView.setFitWidth(1110);
+		
+		imageView.setPreserveRatio(false);
+		
+		imageView.setSmooth(true);
+		
+		imageView.setCache(true);
+		
+		Label title = new Label("Automated Animal Feeder");
 		Label message = new Label("Welcome, press anywhere to start!");
 		
 		VBox pane = new VBox();
 		// Make this center
 		pane.setAlignment(Pos.CENTER);
-		pane.getChildren().add(message);
+		pane.getChildren().addAll(title, message);
 		
 
 		getChildren().addAll(imageView,pane);
