@@ -69,7 +69,7 @@ public class MenuPage extends BorderPane{
 		storage.setId("storage");
 		
 		// Making a feeding log button
-		feedingLog = new Button("FeedLog");
+		feedingLog = new Button("Feeding Log");
 		feedingLog.setId("feedingLog");
 		
 		// Making a feeding log button
@@ -94,5 +94,22 @@ public class MenuPage extends BorderPane{
     public Button getToHomePage(){
         return toHomePage;
     }
+    
+    // Returning the value of refill button
+    public Button getToRefillPage() {
+    	return refill;
+    }
+    
+    // Returning the value of storage button
+    public Button getToStoragePage() {
+    	return storage;
+    }
+    
+    // Returning the value of storage button
+    public Button getToFeedingLogPage() {
+    	return feedingLog;
+    }
+    
+    
 	
 }
