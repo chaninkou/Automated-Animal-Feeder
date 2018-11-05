@@ -18,7 +18,7 @@ public class RefillPage extends BorderPane{
 		Image image = new Image("dataBase/backgroundPicture/refillPage.jpg");
 		ImageView imageView = new ImageView(image);
 		
-		imageView.setFitHeight(560);
+		imageView.setFitHeight(570);
 		imageView.setFitWidth(1100);
 		imageView.setPreserveRatio(false);
 		imageView.setSmooth(true);
@@ -32,7 +32,8 @@ public class RefillPage extends BorderPane{
 		
 		topPart();
 		
-		scrollPage();
+		// Trying to make this work
+		setCenter(scrollPage());
 
 	}
 	
@@ -50,14 +51,18 @@ public class RefillPage extends BorderPane{
 		setTop(hbox);
 	}
 	
+	// Making a scroll page for the selection of pet food
 	public ScrollPane scrollPage() {
 		ScrollPane scrollPane = new ScrollPane();
-		scrollPane.setFitToWidth(true);
-		
+		scrollPane.setPrefSize(500, 300);
+		scrollPane.setVbarPolicy(ScrollPane.ScrollBarPolicy.AS_NEEDED);
+		scrollPane.setHbarPolicy(ScrollPane.ScrollBarPolicy.AS_NEEDED);
+		scrollPane.setPadding(new Insets(0, 0, 500, 0));
+		scrollPane.setMaxSize(500, 300);
 		return scrollPane;
 	}
 	
-	
+
 	// Returning the value of toMenuPage
     public Button getToMenuPage(){
         return toMenuPage;
