@@ -1,5 +1,6 @@
 package application;
 	
+import backend.InformationRetrieve;
 import javafx.application.Application;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
@@ -10,6 +11,8 @@ public class Main extends Application {
 	@Override
 	public void start(Stage primaryStage) {
 		try {
+			// Retrieve the information for pet food
+			InformationRetrieve.petFoodimport(InformationRetrieve.petFoodFile);
 			
 			// Calling the home page
 			HomeStartPage homePage = new HomeStartPage();
