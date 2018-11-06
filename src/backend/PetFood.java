@@ -2,14 +2,14 @@ package backend;
 
 
 public class PetFood {
-	private String image;
+	private String imagePath;
 	private String name;
 	private String petKind;
 	private String ingredient;
 	private int dailyFeeding;
 	
-	public PetFood(String image, String name, String petKind, String ingredient, int dailyFeeding){
-		this.image = image;
+	public PetFood(String imagePath, String name, String petKind, String ingredient, int dailyFeeding){
+		this.imagePath = imagePath;
 		this.name = name;
 		this.petKind = petKind;
 		this.ingredient = ingredient;
@@ -17,8 +17,8 @@ public class PetFood {
 		
 	}
 
-	public String getImage() {
-		return image;
+	public String getImagePath() {
+		return imagePath;
 	}
 
 	public String getName() {

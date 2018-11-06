@@ -1,12 +1,12 @@
-Blue Wilderness Nature With Salmon, dataBase/FoodPicture/BlueWildernessDiet.png, Cat, Salmon, 2
-Blue Wilderness Nature With Chicken, dataBase/FoodPicture/BlueWildernessNature.png, Dog, Chicken, 3
-Blue Wilderness Nature With Red Meat, dataBase/FoodPicture/BlueWildernessRocky.png, Dog, Red Meat, 2
-Meow Mix Kitten Nibbles, dataBase/FoodPicture/MeowMixKittenNibbles.png, Cat, Chicken/Fish/Salmon/Turkey, 1
-Meow Mix Kitten Original Choice, dataBase/FoodPicture/MeowMixKittenOriginalChoice.png, Cat, Chicken/Fish/Salmon/Turkey, 2
-Pedigree Adult, dataBase/FoodPicture/PedigreeAdult.png, Dog, Chicken/Rice/Vegetable, 1
-Pedigree Healthy Weight, dataBase/FoodPicture/PedigreeHealthyWeight.png, Dog, Chicken/Vegetable, 3
-Pedigree High Protein, dataBase/FoodPicture/PedigreeHighProtein.png, Dog, Beef/Lamb, 2
-Pedigree Small Dog, dataBase/FoodPicture/PedigreeSmall.png, Dog, Chicken/Rice/Vegetable, 3
+dataBase/FoodPicture/BlueWildernessDiet.png, Blue Wilderness Nature With Salmon, Cat, Salmon, 2
+dataBase/FoodPicture/BlueWildernessNature.png, Blue Wilderness Nature With Chicken, Dog, Chicken, 3
+dataBase/FoodPicture/BlueWildernessRocky.png, Blue Wilderness Nature With Red Meat, Dog, Red Meat, 2
+dataBase/FoodPicture/MeowMixKittenNibbles.png, Meow Mix Kitten Nibbles, Cat, Chicken/Fish/Salmon/Turkey, 1
+dataBase/FoodPicture/MeowMixKittenOriginalChoice.png, Meow Mix Kitten Original Choice, Cat, Chicken/Fish/Salmon/Turkey, 2
+dataBase/FoodPicture/PedigreeAdult.png, Pedigree Adult, Dog, Chicken/Rice/Vegetable, 1
+dataBase/FoodPicture/PedigreeHealthyWeight.png, Pedigree Healthy Weight, Dog, Chicken/Vegetable, 3
+dataBase/FoodPicture/PedigreeHighProtein.png, Pedigree High Protein, Dog, Beef/Lamb, 2
+dataBase/FoodPicture/PedigreeSmall.png, Pedigree Small Dog, Dog, Chicken/Rice/Vegetable, 3
 
 
 
