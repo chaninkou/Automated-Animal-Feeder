@@ -12,7 +12,7 @@ public class Main extends Application {
 	public void start(Stage primaryStage) {
 		try {
 			// Retrieve the information for pet food
-			InformationRetrieve.petFoodimport(InformationRetrieve.petFoodFile);
+			InformationRetrieve.petFoodimport(InformationRetrieve.petFoodFilePath);
 			
 			// Calling the home page
 			HomeStartPage homePage = new HomeStartPage();
