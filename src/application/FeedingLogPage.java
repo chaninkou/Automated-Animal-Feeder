@@ -17,8 +17,8 @@ public class FeedingLogPage extends BorderPane{
 		Image image = new Image("dataBase/backgroundPicture/feedingLogPage.jpg");
 		ImageView imageView = new ImageView(image);
 		
-		imageView.setFitHeight(560);
-		imageView.setFitWidth(1100);
+		imageView.setFitHeight(700);
+		imageView.setFitWidth(1200);
 		imageView.setPreserveRatio(false);
 		imageView.setSmooth(true);
 		imageView.setCache(true);

@@ -8,13 +8,13 @@ public class SelectedPetFood {
 	
 	public static List<PetFood> petFoodList = new ArrayList<PetFood>();
 	
+	// Could be only click and select 3 petFood picture
 	private final int maxSize = 3;
 	
 	private String information = "";
 	
 	public SelectedPetFood(){
 		petFoodArray = new PetFood[maxSize];
-		
 	}
 	
 	public static void addPetFood(PetFood food){

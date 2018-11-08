@@ -24,8 +24,8 @@ public class RefillPage extends BorderPane{
 		Image image = new Image("dataBase/backgroundPicture/refillPage.jpg");
 		ImageView imageView = new ImageView(image);
 		
-		imageView.setFitHeight(570);
-		imageView.setFitWidth(1100);
+		imageView.setFitHeight(700);
+		imageView.setFitWidth(1200);
 		imageView.setPreserveRatio(false);
 		imageView.setSmooth(true);
 		imageView.setCache(true);
@@ -67,9 +67,9 @@ public class RefillPage extends BorderPane{
 		
 		scrollPane.setHbarPolicy(ScrollPane.ScrollBarPolicy.AS_NEEDED);
 		
-		scrollPane.setPadding(new Insets(0, 0, 500, 0));
+		scrollPane.setPadding(new Insets(0, 0, 0, 0));
 		
-		scrollPane.setMaxSize(500, 300);
+		scrollPane.setMaxSize(710, 400);
 		
 		scrollPane.setContent(gridpane);
 		
@@ -79,16 +79,60 @@ public class RefillPage extends BorderPane{
 	public GridPane gridPanePetFood(List<PetFood> petFoodList){
 		GridPane gridPane = new GridPane();
 		
-		Image image = new Image(petFoodList.get(1).getImagePath());
+		// The gap between the pictures
+		gridPane.setHgap(15);
 		
-        ImageView imageView = new ImageView(image);
-        imageView.setFitHeight(1000);
+		// The gap between the pictures
+		gridPane.setVgap(15);
+		
+		// Setting center, but doesn't really need this
+        gridPane.setAlignment(Pos.CENTER);
         
-        gridPane.add(imageView, 1, 1);
-        
+        // To make the spacing looks nice
+        gridPane.setPadding(new Insets(10,10,10,10));
+		
+        // A counter to keep track of the which pictures to display
+		int index = 0;
+		
+		// Making two for loops to display the pet food picture by 3 rows and 3 columns
+		for(int row = 0; row < 3; row++){
+			for(int column = 0; column < 3; column++){
+				Button buttonImage = new Button();
+				buttonImage.setOnAction(event -> {
+					
+				});
+				
+				Image image = new Image(petFoodList.get(index).getImagePath());
+				
+		        ImageView imageView = new ImageView(image);
+		        
+				imageView.setFitHeight(200);
+				
+				imageView.setFitWidth(200);
+				
+				imageView.setPreserveRatio(false);
+				
+				imageView.setSmooth(true);
+				
+				imageView.setCache(true);
+		
+		        buttonImage.setGraphic(imageView);
+		        
+		        gridPane.add(buttonImage, column, row);
+		        
+		        index++;     
+			}
+		}
         
 		return gridPane;
 	}
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	

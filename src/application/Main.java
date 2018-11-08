@@ -50,8 +50,8 @@ public class Main extends Application {
 			
 			
 			primaryStage.setScene(scene);
-			primaryStage.setWidth(1100);
-			primaryStage.setHeight(600);
+			primaryStage.setWidth(1200);
+			primaryStage.setHeight(700);
 	        
 			// The user will not be able to maximize the screen
 			primaryStage.setResizable(false);
