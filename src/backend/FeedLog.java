@@ -12,13 +12,13 @@ public class FeedLog implements Serializable {
 	private int day;
 	private int year; 
 	
-	private String dogName;
-	private String dogFoodBrand;
+	private String petName;
+	private String petFoodBrand;
 	private List<String> list;
 	
-	public FeedLog(String dogNameIn,String dogFoodBrandIn, String dateOfFeedingIn) {
-		dogName = dogNameIn;
-		dogFoodBrand = dogFoodBrandIn;
+	public FeedLog(String petNameIn,String petFoodBrandIn, String dateOfFeedingIn) {
+		petName = petNameIn;
+		petFoodBrand = petFoodBrandIn;
 		
 		list = new ArrayList<String>();
 		
@@ -29,11 +29,11 @@ public class FeedLog implements Serializable {
 		
 	}
 	
-	public String getDogName() {
-		return dogName;
+	public String getpetName() {
+		return petName;
 	}
 	public String getDogFoodBrand() {
-		return dogFoodBrand;
+		return petFoodBrand;
 	}
 	public String getDate(){
 		String date = month + "/" + day + "/" + year;
@@ -47,15 +47,15 @@ public class FeedLog implements Serializable {
 		year = Integer.parseInt(a[2]);
 	}
 	
-	public void setDogName(String dogName) {
-		this.dogName = dogName;
+	public void setPetName(String petName) {
+		this.petName = petName;
 	}
-	public void setDogfoodBrand (String dogFoodBrand) {
-		this.dogFoodBrand = dogFoodBrand;
+	public void setDogfoodBrand (String petFoodBrand) {
+		this.petFoodBrand = petFoodBrand;
 	}
 	
 	public String toString() {
-		return dogName + " ate " + dogFoodBrand + " on " + getDate(); 
+		return petName + " ate " + petFoodBrand + " on " + getDate(); 
 	}
 	
 	public void addAnimalLog(String animal) {
