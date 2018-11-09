@@ -1,6 +1,7 @@
 package application;
 	
 import backend.InformationRetrieve;
+import backend.SelectedPetFood;
 import javafx.application.Application;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
@@ -101,6 +102,10 @@ public class Main extends Application {
 	// This is for the refill page
 	public void refillPageController(MenuPage menuPage, Scene scene, RefillPage refillPage) {
 		refillPage.getToMenuPage().setOnAction(e -> scene.setRoot(menuPage));
+		refillPage.getSelectedButton().setOnAction(e -> {
+			SelectedPetFood.addPetFood(RefillPage.selectedPicture);
+			scene.setRoot(menuPage);
+		});
 	}
 	
 	// This is for the storage page

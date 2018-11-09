@@ -17,9 +17,15 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
 public class RefillPage extends BorderPane{
+	// This is the button to see which one got selected
+	private Button selectedButton;
+	
 	private Button toMenuPage;
+	
 	private VBox selectedInformation;
+	
 	private List<PetFood> petFoodList = SelectedPetFood.petFoodList;
+	
 	public static PetFood selectedPicture;
 	
 	
@@ -170,11 +176,13 @@ public class RefillPage extends BorderPane{
 		
 		Label dailyFeeding = new Label("Daily Feeding: " + selectedPicture.getDailyFeeding() + " time(s) a day");
 		
+		selectedButton = new Button("SELECT");
+		
 		VBox information = new VBox();
 		
 		information.getChildren().addAll(name, petKind, ingredient, dailyFeeding);
 		
-		selectedInformation.getChildren().addAll(pictureOfSelected, information);
+		selectedInformation.getChildren().addAll(pictureOfSelected, information, selectedButton);
 		selectedInformation.setAlignment(Pos.TOP_CENTER);
 		selectedInformation.setPadding(new Insets(10,50,10,10));
 		selectedInformation.setMinWidth(2);
@@ -220,12 +228,14 @@ public class RefillPage extends BorderPane{
 	}
 	
 	
-	
-	
-	
 	// Returning the value of toMenuPage
     public Button getToMenuPage(){
         return toMenuPage;
+    }
+    
+    // Returning the value of selectedButton
+    public Button getSelectedButton(){
+    	return selectedButton;
     }
 	
 }
