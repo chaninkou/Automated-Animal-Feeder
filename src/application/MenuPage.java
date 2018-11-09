@@ -14,7 +14,9 @@ public class MenuPage extends BorderPane{
 	private Button storage;
 	private Button feedingLog;
 	private Button setting;
+	private Button dispense;
 	private Button toHomePage;
+	
 	
 	
 	
@@ -59,6 +61,7 @@ public class MenuPage extends BorderPane{
 		// Creating a HBox
 		HBox hbox = new HBox();
 		
+		
 		// Making a refill button
 		refill = new Button("Refill");
 		refill.setId("refill");
@@ -75,6 +78,12 @@ public class MenuPage extends BorderPane{
 		setting = new Button("Setting");
 		setting.setId("setting");
 		
+		// Making a feeding log button
+		dispense = new Button("DISPENSE");
+		
+		dispense.setId("dispense");
+		dispense.getStyleClass().add("dispense");
+		
 		hbox.setPadding(new Insets(0,0,30,0));
 		hbox.setSpacing(50);
 		
@@ -82,7 +91,7 @@ public class MenuPage extends BorderPane{
 		hbox.setAlignment(Pos.CENTER);
 		
 		// Adding all the children
-		hbox.getChildren().addAll(refill,storage,feedingLog, setting);
+		hbox.getChildren().addAll(refill,storage,feedingLog, setting, dispense);
 		
 		// Need this to set it to the bottom of the GUI
 		setBottom(hbox);
