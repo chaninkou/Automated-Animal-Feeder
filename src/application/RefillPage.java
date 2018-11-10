@@ -22,9 +22,9 @@ public class RefillPage extends BorderPane{
 	
 	private Button toMenuPage;
 	
-	private VBox selectedInformation;
-	
 	private List<PetFood> petFoodList = SelectedPetFood.petFoodList;
+	
+	private VBox selectedInformation;
 	
 	public static PetFood selectedPicture;
 	
@@ -177,6 +177,8 @@ public class RefillPage extends BorderPane{
 		Label dailyFeeding = new Label("Daily Feeding: " + selectedPicture.getDailyFeeding() + " time(s) a day");
 		
 		selectedButton = new Button("SELECT");
+		selectedButton.setId("selectedButton");
+	
 		
 		VBox information = new VBox();
 		

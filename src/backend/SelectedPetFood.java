@@ -11,11 +11,10 @@ public class SelectedPetFood {
 	// Could be only click and select 3 petFood picture
 	private final int maxSize = 3;
 	
-	private String information = "";
-	
 	public SelectedPetFood(){
 		petFoodArray = new PetFood[maxSize];
 	}
+	
 	
 	public static void addPetFood(PetFood food){
 		for (int k = 0; k < petFoodArray.length; k++){
@@ -27,6 +26,7 @@ public class SelectedPetFood {
 	}
 	
 	public String toString(){
+		String information = "";
 		for (int k = 0; k < petFoodList.size(); k++){
 			information += "Name: " + petFoodList.get(k).getName() + "\n"
 							+ "Pet Kind: " + petFoodList.get(k).getPetKind() + "\n"
