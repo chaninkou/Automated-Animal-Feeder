@@ -104,6 +104,8 @@ public class Main extends Application {
 		refillPage.getToMenuPage().setOnAction(e -> scene.setRoot(menuPage));
 		refillPage.getSelectedButton().setOnAction(e -> {
 			SelectedPetFood.addPetFood(RefillPage.selectedPicture);
+			// Checking if I could get the name I selected
+			System.out.println(RefillPage.selectedPicture.getName());
 			scene.setRoot(menuPage);
 		});
 	}

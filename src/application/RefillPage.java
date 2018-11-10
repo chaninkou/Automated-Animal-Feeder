@@ -176,8 +176,7 @@ public class RefillPage extends BorderPane{
 		
 		Label dailyFeeding = new Label("Daily Feeding: " + selectedPicture.getDailyFeeding() + " time(s) a day");
 		
-		selectedButton = new Button("SELECT");
-		selectedButton.setId("selectedButton");
+		selectedButton = new Button("Select");
 	
 		
 		VBox information = new VBox();

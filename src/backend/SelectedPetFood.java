@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class SelectedPetFood {
-	public static PetFood[] petFoodArray;
+	public static PetFood[] petFoodArray = new PetFood[3];
 	
 	public static List<PetFood> petFoodList = new ArrayList<PetFood>();
 	
@@ -12,6 +12,7 @@ public class SelectedPetFood {
 	private final int maxSize = 3;
 	
 	public SelectedPetFood(){
+		// This does not work for some reason, need to put it in public static PetFood[]
 		petFoodArray = new PetFood[maxSize];
 	}
 	
