@@ -38,6 +38,9 @@ public class HomeStartPage extends StackPane{
 		
 		Label title = new Label("Automated Animal Feeder");
 		Label message = new Label("Welcome, press anywhere to start!");
+		title.getStyleClass().add("title");
+		message.getStyleClass().add("message");
+		
 		realTime();
 		
 		VBox pane = new VBox();
@@ -53,6 +56,7 @@ public class HomeStartPage extends StackPane{
 	private void realTime() {
 		// Text message
 		timeMessage = new Text();
+		timeMessage.getStyleClass().add("timeMessage");
 		
 		// Formating for the date
 		DateFormat timeFormat = new SimpleDateFormat("EEE, hh:mm:ss aa");
