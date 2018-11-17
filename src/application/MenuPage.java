@@ -1,5 +1,6 @@
 package application;
 
+import backend.SelectedPetFood;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
@@ -16,6 +17,7 @@ public class MenuPage extends BorderPane{
 	private Button setting;
 	private Button dispense;
 	private Button toHomePage;
+	private Button[] foodFromRefillingPage = new Button[3];
 	
 	
 	
@@ -39,10 +41,14 @@ public class MenuPage extends BorderPane{
 		// Calling the top Menu
 		topPart();
 		
+		// Calling the middle 3 boxes
+		displayPetFood();
+		
 		// Calling the bottom Menu
 		bottomPart();
 	}
 	
+	// All this is just a back button on top that goes back to home page.
 	public void topPart(){
 		HBox hbox = new HBox();
 		toHomePage = new Button("Back");
@@ -55,6 +61,36 @@ public class MenuPage extends BorderPane{
 		
 		hbox.getChildren().addAll(toHomePage);
 		setTop(hbox);
+	}
+	
+	// Displaying the center 3 boxes of food that are selected from refilling page.
+	public void displayPetFood(){
+		HBox hbox = new HBox();
+		
+		// 3 since petFoodArray.length from SelectedPetFood is 3
+		for(int k = 0; k < foodFromRefillingPage.length; k++){
+			// Making a button
+			Button selectedBoxInMenu = new Button();
+			// Will do CSS for this
+			// selectedBoxInMenu.getStyleClass().add("selectedBoxInMenu");
+			
+			if(k == 0){
+				selectedBoxInMenu.setText("Please press Refill to selected the first Pet Food");
+			}else if(k == 1){
+				selectedBoxInMenu.setText("Please press Refill to selected the second Pet Food");
+			}else{
+				selectedBoxInMenu.setText("Please press Refill to selected the third Pet Food");
+			}
+		
+			this.foodFromRefillingPage[k] = selectedBoxInMenu;
+			hbox.getChildren().add(selectedBoxInMenu);
+		}
+		
+		hbox.setPadding(new Insets(30, 0, 0, 50));
+		hbox.setSpacing(100);
+		hbox.setAlignment(Pos.CENTER);
+		
+		setCenter(hbox);
 	}
 	
 	public void bottomPart(){
@@ -97,6 +133,45 @@ public class MenuPage extends BorderPane{
 		setBottom(hbox);
 	}
 	
+	// Only call this method after user select a pet food from refilling page
+	public void changeDefaultDisplayPetFood(){
+		// length = 3 since petFoodArray.length from SelectedPetFood is 3
+		for(int k = 0; k < foodFromRefillingPage.length; k++){
+			if(SelectedPetFood.petFoodArray[k] != null){
+				// Getting the image
+				Image image = new Image(SelectedPetFood.petFoodArray[k].getImagePath());
+				
+				// Put the image to view
+				ImageView imageView = new ImageView(image);
+				
+				imageView.setFitHeight(200);
+				imageView.setFitWidth(200);
+				imageView.setPreserveRatio(false);
+				imageView.setSmooth(true);
+				imageView.setCache(true);
+				
+				// Make sure to set the default text to nothing
+				foodFromRefillingPage[k].setText(null);
+				
+				foodFromRefillingPage[k].setGraphic(imageView);
+			} else {
+				// Set the image to null and still display the rest of the image
+				System.out.println("testing");
+				if(k == 0){
+					foodFromRefillingPage[k].setText("Please press Refill to selected the first Pet Food");
+					foodFromRefillingPage[k].setGraphic(null);
+				}else if(k == 1){
+					foodFromRefillingPage[k].setText("Please press Refill to selected the second Pet Food");
+					foodFromRefillingPage[k].setGraphic(null);
+				}else{
+					foodFromRefillingPage[k].setText("Please press Refill to selected the third Pet Food");
+					foodFromRefillingPage[k].setGraphic(null);
+				}
+			}
+		}
+	}
+	
+	
 	
 	// Returning the value of toHomePage
     public Button getToHomePage(){
@@ -118,6 +193,10 @@ public class MenuPage extends BorderPane{
     	return feedingLog;
     }
     
+    // Returning the value of the foodFromRefillingPage button
+    public Button[] getFoodFromRefillingPage(){
+    	return foodFromRefillingPage;
+    }
     
 	
 }

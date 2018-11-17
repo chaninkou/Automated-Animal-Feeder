@@ -12,7 +12,7 @@ public class SelectedPetFood {
 	private final int maxSize = 3;
 	
 	public SelectedPetFood(){
-		// This does not work for some reason, need to put it in public static PetFood[]
+		// This is working now, we could only select 3 pet food from the filling page.
 		petFoodArray = new PetFood[maxSize];
 	}
 	

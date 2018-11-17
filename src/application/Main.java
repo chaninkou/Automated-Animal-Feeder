@@ -5,6 +5,7 @@ import backend.SelectedPetFood;
 import javafx.application.Application;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 
 
 public class Main extends Application {
@@ -29,6 +30,9 @@ public class Main extends Application {
 			// Calling the feeding log page
 			FeedingLogPage feedingLogPage = new FeedingLogPage();
 			
+			// Making a new button for the foodFromRefillingPage button from menuPage
+			Button[] foodFromRefillPageButton = menuPage.getFoodFromRefillingPage();
+			
 			
 			Scene scene = new Scene(homePage);
 			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
@@ -48,6 +52,9 @@ public class Main extends Application {
 			
 			// Feeding log page
 			feedingLogPageController(menuPage, scene, feedingLogPage);
+			
+			// A controller for getting the button foodFromRefillPageButton
+			foodFromRefillPageController(scene, foodFromRefillPageButton);
 			
 			
 			primaryStage.setScene(scene);
@@ -104,8 +111,10 @@ public class Main extends Application {
 		refillPage.getToMenuPage().setOnAction(e -> scene.setRoot(menuPage));
 		refillPage.getSelectedButton().setOnAction(e -> {
 			SelectedPetFood.addPetFood(RefillPage.selectedPicture);
-			// Checking if I could get the name I selected
-			System.out.println(RefillPage.selectedPicture.getName());
+			
+			// Call this when user select pet food
+			menuPage.changeDefaultDisplayPetFood();
+			
 			scene.setRoot(menuPage);
 		});
 	}
@@ -120,6 +129,10 @@ public class Main extends Application {
 		feedingLogPage.getToMenuPage().setOnAction(e -> scene.setRoot(menuPage));
 	}
 	
+	// This is the controller for the foodFromRefillPageButton
+	public void foodFromRefillPageController(Scene scene, Button[] foodFromRefillPageButton){
+		
+	}
 	
 	
 
