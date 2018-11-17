@@ -104,6 +104,37 @@ public class Main extends Application {
 			menuPage.getToFeedingLogPage().setOnAction(e -> {
 				scene.setRoot(feedingLogPage);
 			});
+			
+			// Making a array of delete button
+			Button[] deleteButtons = menuPage.getRemoveFoodFromRefillingPage();
+			
+			// If the first button was clicked, then delete first picture
+			if (deleteButtons[0] != null){
+				deleteButtons[0].setOnAction(event -> {
+					SelectedPetFood.deletePetFood(0);
+					menuPage.changeDefaultDisplayPetFood();
+					scene.setRoot(menuPage);
+				});
+			}
+			
+			// If the second button was clicked, then delete first picture
+			if (deleteButtons[1] != null){
+				deleteButtons[1].setOnAction(event -> {
+					SelectedPetFood.deletePetFood(1);
+					menuPage.changeDefaultDisplayPetFood();
+					scene.setRoot(menuPage);
+				});
+			}
+			
+			// If the third button was clicked, then delete first picture
+			if (deleteButtons[2] != null){
+				deleteButtons[2].setOnAction(event -> {
+					SelectedPetFood.deletePetFood(2);
+					menuPage.changeDefaultDisplayPetFood();
+					scene.setRoot(menuPage);
+				});
+			}
+			
 	}
 	
 	// This is for the refill page

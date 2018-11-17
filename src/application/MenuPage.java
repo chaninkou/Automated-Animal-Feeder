@@ -18,6 +18,7 @@ public class MenuPage extends BorderPane{
 	private Button dispense;
 	private Button toHomePage;
 	private Button[] foodFromRefillingPage = new Button[3];
+	private Button[] removeFoodFromRefillingPage = new Button[3];
 	
 	
 	
@@ -51,15 +52,26 @@ public class MenuPage extends BorderPane{
 	// All this is just a back button on top that goes back to home page.
 	public void topPart(){
 		HBox hbox = new HBox();
+		
+		// Back to home page button
 		toHomePage = new Button("Back");
 		toHomePage.setId("back");
-	
 		
+		// Delete first
+		removeFoodFromRefillingPage[0] = new Button("X");
+		
+		// Delete second
+		removeFoodFromRefillingPage[1] = new Button("X");
+		
+		// Delete third
+		removeFoodFromRefillingPage[2] = new Button("X");
+	
+		// Setting for HBox
 		hbox.setPadding(new Insets(30, 0, 0, 50));
 		hbox.setSpacing(100);
 		hbox.setAlignment(Pos.TOP_LEFT);
 		
-		hbox.getChildren().addAll(toHomePage);
+		hbox.getChildren().addAll(toHomePage, removeFoodFromRefillingPage[0], removeFoodFromRefillingPage[1], removeFoodFromRefillingPage[2]);
 		setTop(hbox);
 	}
 	
@@ -169,6 +181,18 @@ public class MenuPage extends BorderPane{
 				}
 			}
 		}
+		
+		// For future delete button
+		if(foodFromRefillingPage[0].getGraphic() != null){
+			System.out.println("1");
+		}
+		if(foodFromRefillingPage[1].getGraphic() != null){
+			System.out.println("2");
+		}
+		if(foodFromRefillingPage[2].getGraphic() != null){
+			System.out.println("3");
+		}
+		
 	}
 	
 	
@@ -196,6 +220,11 @@ public class MenuPage extends BorderPane{
     // Returning the value of the foodFromRefillingPage button
     public Button[] getFoodFromRefillingPage(){
     	return foodFromRefillingPage;
+    }
+    
+    // Returning the value of the foodFromRefillingPage button
+    public Button[] getRemoveFoodFromRefillingPage(){
+    	return removeFoodFromRefillingPage;
     }
     
 	
