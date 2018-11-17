@@ -5,6 +5,7 @@ import backend.SelectedPetFood;
 import javafx.application.Application;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 
 
 public class Main extends Application {
@@ -31,6 +32,11 @@ public class Main extends Application {
 			
 			// Calling the feeding log page
 			SettingsPage settingsPage = new SettingsPage();
+
+			// Making a new button for the foodFromRefillingPage button from menuPage
+			Button[] foodFromRefillPageButton = menuPage.getFoodFromRefillingPage();
+			
+
 			
 			Scene scene = new Scene(homePage);
 			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
@@ -51,8 +57,12 @@ public class Main extends Application {
 			// Feeding log page
 			feedingLogPageController(menuPage, scene, feedingLogPage);
 			
+
 			//Setting Page Controller
 			settingPageController(menuPage,scene,settingsPage);
+
+			// A controller for getting the button foodFromRefillPageButton
+			foodFromRefillPageController(scene, foodFromRefillPageButton);
 			
 			
 			primaryStage.setScene(scene);
@@ -102,10 +112,40 @@ public class Main extends Application {
 			menuPage.getToFeedingLogPage().setOnAction(e -> {
 				scene.setRoot(feedingLogPage);
 			});
+
 			//When user clicks the settings button
 			menuPage.getToSettingsPage().setOnAction(e -> {
 				scene.setRoot(settings);
-			});
+			});	
+			// Making a array of delete button
+			Button[] deleteButtons = menuPage.getRemoveFoodFromRefillingPage();
+			
+			// If the first button was clicked, then delete first picture
+			if (deleteButtons[0] != null){
+				deleteButtons[0].setOnAction(event -> {
+					SelectedPetFood.deletePetFood(0);
+					menuPage.changeDefaultDisplayPetFood();
+					scene.setRoot(menuPage);
+				});
+			}
+			
+			// If the second button was clicked, then delete first picture
+			if (deleteButtons[1] != null){
+				deleteButtons[1].setOnAction(event -> {
+					SelectedPetFood.deletePetFood(1);
+					menuPage.changeDefaultDisplayPetFood();
+					scene.setRoot(menuPage);
+				});
+			}
+			
+			// If the third button was clicked, then delete first picture
+			if (deleteButtons[2] != null){
+				deleteButtons[2].setOnAction(event -> {
+					SelectedPetFood.deletePetFood(2);
+					menuPage.changeDefaultDisplayPetFood();
+					scene.setRoot(menuPage);
+				});
+			}
 	}
 	
 	// This is for the refill page
@@ -113,8 +153,10 @@ public class Main extends Application {
 		refillPage.getToMenuPage().setOnAction(e -> scene.setRoot(menuPage));
 		refillPage.getSelectedButton().setOnAction(e -> {
 			SelectedPetFood.addPetFood(RefillPage.selectedPicture);
-			// Checking if I could get the name I selected
-			System.out.println(RefillPage.selectedPicture.getName());
+			
+			// Call this when user select pet food
+			menuPage.changeDefaultDisplayPetFood();
+			
 			scene.setRoot(menuPage);
 		});
 	}
@@ -134,6 +176,12 @@ public class Main extends Application {
 		settingsPage.getToMenuPage().setOnAction(e -> scene.setRoot(menuPage));
 	}
 	
+
+	// This is the controller for the foodFromRefillPageButton
+	public void foodFromRefillPageController(Scene scene, Button[] foodFromRefillPageButton){
+		
+	}
+
 	
 	
 

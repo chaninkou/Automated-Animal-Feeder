@@ -30,28 +30,39 @@ public class RefillPage extends BorderPane{
 	
 	
 	public RefillPage(){
-		this.selectedPicture = SelectedPetFood.petFoodList.get(0);
+		
+		// Getting the image
 		Image image = new Image("dataBase/backgroundPicture/refillPage.jpg");
+		
+		// Putting the image to view
 		ImageView imageView = new ImageView(image);
 		
+		// Setting for image view
 		imageView.setFitHeight(700);
 		imageView.setFitWidth(1200);
 		imageView.setPreserveRatio(false);
 		imageView.setSmooth(true);
 		imageView.setCache(true);
 		
+		// Making a VBox
 		VBox pane = new VBox();
 		
+		// Put image view to Vbox
 		pane.getChildren().add(imageView);
-
+		
+		// get Children from vbox pane
 		getChildren().add(pane);
 		
+		// Need to get the zero index information so the player could see it once they press on refill page, without this, you would have error.
+		this.selectedPicture = SelectedPetFood.petFoodList.get(0);
+		
+		// Displaying the top part of the screen
 		topPart();
 		
 		// Trying to make this work
 		setCenter(scrollPage(gridPanePetFood(petFoodList)));
 		
-		// 
+		// Display
 		setRight(rightBoxDisplay());
 
 	}
@@ -184,9 +195,12 @@ public class RefillPage extends BorderPane{
 		information.getChildren().addAll(name, petKind, ingredient, dailyFeeding);
 		
 		selectedInformation.getChildren().addAll(pictureOfSelected, information, selectedButton);
+		
+		// Setting for selectedInformation VBox
 		selectedInformation.setAlignment(Pos.TOP_CENTER);
 		selectedInformation.setPadding(new Insets(10,50,10,10));
 		selectedInformation.setMinWidth(2);
+		
 		return selectedInformation;
 	}
 	
