@@ -117,6 +117,10 @@ public class MenuPage extends BorderPane{
     public Button getToFeedingLogPage() {
     	return feedingLog;
     }
+ // Returning the value of toHomePage
+    public Button getToSettingsPage(){
+        return setting;
+    }
     
     
 	

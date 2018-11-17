@@ -29,6 +29,8 @@ public class Main extends Application {
 			// Calling the feeding log page
 			FeedingLogPage feedingLogPage = new FeedingLogPage();
 			
+			// Calling the feeding log page
+			SettingsPage settingsPage = new SettingsPage();
 			
 			Scene scene = new Scene(homePage);
 			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
@@ -38,7 +40,7 @@ public class Main extends Application {
 			homePageController(menuPage, scene, homePage);
 			
 			// Menu page
-			menuPageController(menuPage, scene, homePage, refillPage, storagePage, feedingLogPage);
+			menuPageController(menuPage, scene, homePage, refillPage, storagePage, feedingLogPage,settingsPage);
 			
 			// Refill page
 			refillPageController(menuPage, scene, refillPage);
@@ -48,6 +50,9 @@ public class Main extends Application {
 			
 			// Feeding log page
 			feedingLogPageController(menuPage, scene, feedingLogPage);
+			
+			//Setting Page Controller
+			settingPageController(menuPage,scene,settingsPage);
 			
 			
 			primaryStage.setScene(scene);
@@ -80,7 +85,7 @@ public class Main extends Application {
 	}
 	
 	// This is for the menu page
-	public void menuPageController(MenuPage menuPage, Scene scene, HomeStartPage homePage, RefillPage refillPage, StoragePage storagePage, FeedingLogPage feedingLogPage){
+	public void menuPageController(MenuPage menuPage, Scene scene, HomeStartPage homePage, RefillPage refillPage, StoragePage storagePage, FeedingLogPage feedingLogPage,SettingsPage settings){
 			menuPage.getToHomePage().setOnAction(e -> scene.setRoot(homePage));
 			
 			// When user click refill button
@@ -96,6 +101,10 @@ public class Main extends Application {
 			// When user click the feeding log button
 			menuPage.getToFeedingLogPage().setOnAction(e -> {
 				scene.setRoot(feedingLogPage);
+			});
+			//When user clicks the settings button
+			menuPage.getToSettingsPage().setOnAction(e -> {
+				scene.setRoot(settings);
 			});
 	}
 	
@@ -118,6 +127,11 @@ public class Main extends Application {
 	// This is for the feeding log page
 	public void feedingLogPageController(MenuPage menuPage, Scene scene, FeedingLogPage feedingLogPage) {
 		feedingLogPage.getToMenuPage().setOnAction(e -> scene.setRoot(menuPage));
+	}
+	
+	//this is for settings page
+	public void settingPageController(MenuPage menuPage, Scene scene, SettingsPage settingsPage) {
+		settingsPage.getToMenuPage().setOnAction(e -> scene.setRoot(menuPage));
 	}
 	
 	
