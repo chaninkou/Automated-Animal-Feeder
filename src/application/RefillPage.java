@@ -20,6 +20,7 @@ public class RefillPage extends BorderPane{
 	// This is the button to see which one got selected
 	private Button selectedButton;
 	
+	// This is a button for to menu page
 	private Button toMenuPage;
 	
 	private List<PetFood> petFoodList = SelectedPetFood.petFoodList;
