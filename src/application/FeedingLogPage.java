@@ -30,7 +30,7 @@ public class FeedingLogPage extends BorderPane{
 		getChildren().add(pane);
 		
 		topPart();
-
+		bottomPart();
 	}
 	
 	public void topPart(){
@@ -47,7 +47,16 @@ public class FeedingLogPage extends BorderPane{
 		setTop(hbox);
 	}
 	
-	
+	public void bottomPart() {
+		HBox bottomBox = new HBox();
+		Button save = new Button("Save");
+		Button clear = new Button("Clear");
+		bottomBox.setPadding(new Insets(0,30,30,0));
+		bottomBox.setSpacing(50);
+		bottomBox.setAlignment(Pos.BOTTOM_CENTER);
+		bottomBox.getChildren().addAll(save,clear);
+		setCenter(bottomBox);
+	}
 	// Returning the value of toMenuPage
     public Button getToMenuPage(){
         return toMenuPage;
