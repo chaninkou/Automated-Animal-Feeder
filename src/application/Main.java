@@ -33,11 +33,12 @@ public class Main extends Application {
 			
 			// Calling the feeding log page
 			SettingsPage settingsPage = new SettingsPage();
+			
+			// Calling the loading screen page
+			LoadingScreen loadingScreen = new LoadingScreen();
 
 			// Making a new button for the foodFromRefillingPage button from menuPage
 			Button[] foodFromRefillPageButton = menuPage.getFoodFromRefillingPage();
-			
-
 			
 			Scene scene = new Scene(homePage);
 			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
@@ -47,7 +48,7 @@ public class Main extends Application {
 			homePageController(menuPage, scene, homePage);
 			
 			// Menu page
-			menuPageController(menuPage, scene, homePage, refillPage, storagePage, feedingLogPage,settingsPage);
+			menuPageController(menuPage, scene, homePage, refillPage, storagePage, feedingLogPage,settingsPage,loadingScreen);
 			
 			// Refill page
 			refillPageController(menuPage, scene, refillPage);
@@ -58,12 +59,14 @@ public class Main extends Application {
 			// Feeding log page
 			feedingLogPageController(menuPage, scene, feedingLogPage);
 			
-
 			//Setting Page Controller
 			settingPageController(menuPage,scene,settingsPage);
 
 			// A controller for getting the button foodFromRefillPageButton
 			foodFromRefillPageController(scene, foodFromRefillPageButton);
+			
+			// A controller for the loading screen page
+			loadingScreenController(scene, storagePage, loadingScreen);
 			
 			primaryStage.setScene(scene);
 			primaryStage.setWidth(1200);
@@ -98,7 +101,7 @@ public class Main extends Application {
 	}
 	
 	// This is for the menu page
-	public void menuPageController(MenuPage menuPage, Scene scene, HomeStartPage homePage, RefillPage refillPage, StoragePage storagePage, FeedingLogPage feedingLogPage,SettingsPage settings){
+	public void menuPageController(MenuPage menuPage, Scene scene, HomeStartPage homePage, RefillPage refillPage, StoragePage storagePage, FeedingLogPage feedingLogPage,SettingsPage settings, LoadingScreen loadingScreen){
 			menuPage.getToHomePage().setOnAction(e -> scene.setRoot(homePage));
 			
 			// When user click refill button
@@ -120,6 +123,13 @@ public class Main extends Application {
 			menuPage.getToSettingsPage().setOnAction(e -> {
 				scene.setRoot(settings);
 			});	
+
+			//When user clicks the dispense button
+			menuPage.getDispenseButton().setOnAction(e -> {
+				scene.setRoot(loadingScreen);
+				loadingScreen.loadingBar(90000000);
+			});	
+			
 			// Making a array of delete button
 			Button[] deleteButtons = menuPage.getRemoveFoodFromRefillingPage();
 			
@@ -185,7 +195,11 @@ public class Main extends Application {
 		
 	}
 
-	
+	public void loadingScreenController(Scene scene, StoragePage storagePage, LoadingScreen loadingScreen){
+		loadingScreen.getFinished().setOnAction(e -> {
+			scene.setRoot(storagePage);
+		});
+	}
 	
 
 	
