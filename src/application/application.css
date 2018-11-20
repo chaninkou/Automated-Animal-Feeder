@@ -40,3 +40,29 @@
 	    -fx-font-size: 30px;
 	    -fx-font-weight: bold;
 }
+
+#selectedBoxInMenu0{
+	-fx-border-color: black;
+	-fx-border-width: 2;
+	-fx-pref-widith: 400;
+	-fx-pref-height: 200;
+	-fx-min-widith: 400;
+	-fx-max-height: 200;
+	-fx-background-color: white;
+}
+
+#selectedBoxInMenu1{
+	-fx-border-color: black;
+	-fx-border-width: 2;
+	-fx-pref-widith: 400;
+	-fx-pref-height: 200;
+	-fx-background-color: white;
+}
+
+#selectedBoxInMenu2{
+	-fx-border-color: black;
+	-fx-border-width: 2;
+	-fx-pref-widith: 200;
+	-fx-pref-height: 200;
+	-fx-background-color: white;
+}

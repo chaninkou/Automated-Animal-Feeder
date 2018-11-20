@@ -6,6 +6,7 @@ import javafx.application.Application;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 
 
@@ -38,7 +39,7 @@ public class Main extends Application {
 			LoadingScreen loadingScreen = new LoadingScreen();
 
 			// Making a new button for the foodFromRefillingPage button from menuPage
-			Button[] foodFromRefillPageButton = menuPage.getFoodFromRefillingPage();
+			Label[] foodFromRefillPageButton = menuPage.getFoodFromRefillingPage();
 			
 			Scene scene = new Scene(homePage);
 			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
@@ -61,9 +62,6 @@ public class Main extends Application {
 			
 			//Setting Page Controller
 			settingPageController(menuPage,scene,settingsPage);
-
-			// A controller for getting the button foodFromRefillPageButton
-			foodFromRefillPageController(scene, foodFromRefillPageButton);
 			
 			// A controller for the loading screen page
 			loadingScreenController(scene, feedingLogPage, loadingScreen);
@@ -187,12 +185,6 @@ public class Main extends Application {
 	//this is for settings page
 	public void settingPageController(MenuPage menuPage, Scene scene, SettingsPage settingsPage) {
 		settingsPage.getToMenuPage().setOnAction(e -> scene.setRoot(menuPage));
-	}
-	
-
-	// This is the controller for the foodFromRefillPageButton
-	public void foodFromRefillPageController(Scene scene, Button[] foodFromRefillPageButton){
-		
 	}
 
 	// This is the controller for the loading screen 

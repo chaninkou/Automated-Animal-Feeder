@@ -4,6 +4,7 @@ import backend.SelectedPetFood;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
@@ -17,7 +18,7 @@ public class MenuPage extends BorderPane{
 	private Button setting;
 	private Button dispense;
 	private Button toHomePage;
-	private Button[] foodFromRefillingPage = new Button[3];
+	private Label[] foodFromRefillingPage = new Label[3];
 	private Button[] removeFoodFromRefillingPage = new Button[3];
 	
 	
@@ -82,16 +83,17 @@ public class MenuPage extends BorderPane{
 		// 3 since petFoodArray.length from SelectedPetFood is 3
 		for(int k = 0; k < foodFromRefillingPage.length; k++){
 			// Making a button
-			Button selectedBoxInMenu = new Button();
+			Label selectedBoxInMenu = new Label();
+			selectedBoxInMenu.getStyleClass().add("selectedBoxInMenu");
 			// Will do CSS for this
 			// selectedBoxInMenu.getStyleClass().add("selectedBoxInMenu");
-			
+			selectedBoxInMenu.setId("selectedBoxInMenu" + k);
 			if(k == 0){
-				selectedBoxInMenu.setText("Please press Refill to selected the first Pet Food");
+				selectedBoxInMenu.setText("Please Press Refill for the 1st Pet Food");
 			}else if(k == 1){
-				selectedBoxInMenu.setText("Please press Refill to selected the second Pet Food");
+				selectedBoxInMenu.setText("Please Press Refill for the 2nd Pet Food");
 			}else{
-				selectedBoxInMenu.setText("Please press Refill to selected the third Pet Food");
+				selectedBoxInMenu.setText("Please Press Refill for the 3rd Pet Food");
 			}
 		
 			this.foodFromRefillingPage[k] = selectedBoxInMenu;
@@ -170,13 +172,13 @@ public class MenuPage extends BorderPane{
 				// Set the image to null and still display the rest of the image
 				System.out.println("testing");
 				if(k == 0){
-					foodFromRefillingPage[k].setText("Please press Refill to selected the first Pet Food");
+					foodFromRefillingPage[k].setText("Please Press Refill for the 1st Pet Food");
 					foodFromRefillingPage[k].setGraphic(null);
 				}else if(k == 1){
-					foodFromRefillingPage[k].setText("Please press Refill to selected the second Pet Food");
+					foodFromRefillingPage[k].setText("Please Press Refill for the 2nd Pet Food");
 					foodFromRefillingPage[k].setGraphic(null);
 				}else{
-					foodFromRefillingPage[k].setText("Please press Refill to selected the third Pet Food");
+					foodFromRefillingPage[k].setText("Please Press Refill for the 3rd Pet Food");
 					foodFromRefillingPage[k].setGraphic(null);
 				}
 			}
@@ -222,7 +224,7 @@ public class MenuPage extends BorderPane{
     }
     
     // Returning the value of the foodFromRefillingPage button
-    public Button[] getFoodFromRefillingPage(){
+    public Label[] getFoodFromRefillingPage(){
     	return foodFromRefillingPage;
     }
     
