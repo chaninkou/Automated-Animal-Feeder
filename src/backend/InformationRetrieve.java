@@ -6,9 +6,9 @@ import java.util.Scanner;
 
 public class InformationRetrieve {
 	
-//	public static final String petFoodFile = "dataBase/FoodInformation/petFoodData.csv";
+	public static final String petFoodFilePath = "dataBase/FoodInformation/petFoodData.csv";
 	// This is the file path
-	public static final String petFoodFilePath = "src/dataBase/FoodInformation/petFoodData.csv";
+//	public static final String petFoodFilePath = "src/dataBase/FoodInformation/petFoodData.csv";
 	
 	// Importing from the csv file
 	public static void petFoodimport(String file){

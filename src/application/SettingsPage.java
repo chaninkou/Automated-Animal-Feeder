@@ -17,7 +17,7 @@ public class SettingsPage extends BorderPane {
 	private Button dispenseDuration;
 	
 	public SettingsPage(){
-		Image image = new Image("dataBase/backgroundPicture/alarmclock.jpg");
+		Image image = new Image("backgroundPicture/alarmclock.jpg");
 		ImageView imageView = new ImageView(image);
 		
 		imageView.setFitHeight(700);

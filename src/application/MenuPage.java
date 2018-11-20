@@ -24,7 +24,7 @@ public class MenuPage extends BorderPane{
 	
 	
 	public MenuPage(){
-		Image image = new Image("dataBase/backgroundPicture/menuPage.jpg");
+		Image image = new Image("backgroundPicture/menuPage.jpg");
 		ImageView imageView = new ImageView(image);
 		
 		imageView.setFitHeight(700);

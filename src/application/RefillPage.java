@@ -33,7 +33,7 @@ public class RefillPage extends BorderPane{
 	public RefillPage(){
 		
 		// Getting the image
-		Image image = new Image("dataBase/backgroundPicture/refillPage.jpg");
+		Image image = new Image("backgroundPicture/refillPage.jpg");
 		
 		// Putting the image to view
 		ImageView imageView = new ImageView(image);
