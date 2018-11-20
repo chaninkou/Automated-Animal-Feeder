@@ -21,7 +21,7 @@ public class HomeStartPage extends StackPane{
 	
 	public HomeStartPage() {
 		// Getting the path to the image
-		Image image = new Image("dataBase/backgroundPicture/homePage.jpg");
+		Image image = new Image("/backgroundPicture/homePage.jpg");
 		
 		// Setting the image view
 		ImageView imageView = new ImageView(image);

@@ -24,7 +24,7 @@ public class MenuPage extends BorderPane{
 	
 	
 	public MenuPage(){
-		Image image = new Image("dataBase/backgroundPicture/menuPage.jpg");
+		Image image = new Image("backgroundPicture/menuPage.jpg");
 		ImageView imageView = new ImageView(image);
 		
 		imageView.setFitHeight(700);
@@ -123,8 +123,8 @@ public class MenuPage extends BorderPane{
 		feedingLog.setId("feedingLog");
 		
 		// Making a feeding log button
-		setting = new Button("Setting");
-		setting.setId("setting");
+		setting = new Button("Settings");
+		setting.setId("settings");
 		
 		// Making a feeding log button
 		dispense = new Button("DISPENSE");
@@ -229,6 +229,11 @@ public class MenuPage extends BorderPane{
     // Returning the value of the foodFromRefillingPage button
     public Button[] getRemoveFoodFromRefillingPage(){
     	return removeFoodFromRefillingPage;
+    }
+    
+    // Returning the value of the dispense button
+    public Button getDispenseButton(){
+    	return dispense;
     }
     
 	

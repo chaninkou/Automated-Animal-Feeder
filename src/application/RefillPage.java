@@ -20,6 +20,7 @@ public class RefillPage extends BorderPane{
 	// This is the button to see which one got selected
 	private Button selectedButton;
 	
+	// This is a button for to menu page
 	private Button toMenuPage;
 	
 	private List<PetFood> petFoodList = SelectedPetFood.petFoodList;
@@ -32,7 +33,7 @@ public class RefillPage extends BorderPane{
 	public RefillPage(){
 		
 		// Getting the image
-		Image image = new Image("dataBase/backgroundPicture/refillPage.jpg");
+		Image image = new Image("backgroundPicture/refillPage.jpg");
 		
 		// Putting the image to view
 		ImageView imageView = new ImageView(image);

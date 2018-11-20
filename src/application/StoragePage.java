@@ -14,7 +14,7 @@ public class StoragePage extends BorderPane{
 	
 	
 	public StoragePage(){
-		Image image = new Image("dataBase/backgroundPicture/storagePage.png");
+		Image image = new Image("backgroundPicture/storagePage.png");
 		ImageView imageView = new ImageView(image);
 		
 		imageView.setFitHeight(700);
