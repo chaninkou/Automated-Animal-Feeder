@@ -6,6 +6,7 @@ import javafx.application.Application;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.image.Image;
 
 
 public class Main extends Application {
@@ -64,13 +65,15 @@ public class Main extends Application {
 			// A controller for getting the button foodFromRefillPageButton
 			foodFromRefillPageController(scene, foodFromRefillPageButton);
 			
-			
 			primaryStage.setScene(scene);
 			primaryStage.setWidth(1200);
 			primaryStage.setHeight(700);
 	        
 			// The user will not be able to maximize the screen
 			primaryStage.setResizable(false);
+			
+			// Putting icon
+			primaryStage.getIcons().add(new Image("backgroundPicture/animalIcon.png"));
 			
 			// Setting the title
 			primaryStage.setTitle("AAF");
