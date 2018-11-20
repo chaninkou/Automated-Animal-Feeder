@@ -13,7 +13,7 @@ public class Main extends Application {
 	@Override
 	public void start(Stage primaryStage) {
 		try {
-			// Retrieve the information for pet food
+			// Retrieve the information for pet food comment
 			InformationRetrieve.petFoodimport(InformationRetrieve.petFoodFilePath);
 			
 			// Calling the home page
@@ -66,7 +66,7 @@ public class Main extends Application {
 			foodFromRefillPageController(scene, foodFromRefillPageButton);
 			
 			// A controller for the loading screen page
-			loadingScreenController(scene, storagePage, loadingScreen);
+			loadingScreenController(scene, feedingLogPage, loadingScreen);
 			
 			primaryStage.setScene(scene);
 			primaryStage.setWidth(1200);
@@ -195,9 +195,10 @@ public class Main extends Application {
 		
 	}
 
-	public void loadingScreenController(Scene scene, StoragePage storagePage, LoadingScreen loadingScreen){
+	// This is the controller for the loading screen 
+	public void loadingScreenController(Scene scene, FeedingLogPage feedingLogPage, LoadingScreen loadingScreen){
 		loadingScreen.getFinished().setOnAction(e -> {
-			scene.setRoot(storagePage);
+			scene.setRoot(feedingLogPage);
 		});
 	}
 	
