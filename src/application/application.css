@@ -66,3 +66,28 @@
 	-fx-pref-height: 200;
 	-fx-background-color: white;
 }
+
+#selectedBoxInDispensePage0{
+	-fx-border-color: black;
+	-fx-border-width: 2;
+	-fx-pref-widith: 400;
+	-fx-pref-height: 200;
+	-fx-min-widith: 400;
+	-fx-max-height: 200;
+}
+
+#selectedBoxInDispensePage1{
+	-fx-border-color: black;
+	-fx-border-width: 2;
+	-fx-pref-widith: 400;
+	-fx-pref-height: 200;
+}
+
+#selectedBoxInDispensePage2{
+	-fx-border-color: black;
+	-fx-border-width: 2;
+	-fx-pref-widith: 200;
+	-fx-pref-height: 200;
+}
+
+

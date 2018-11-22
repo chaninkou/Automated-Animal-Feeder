@@ -224,11 +224,6 @@ public class MenuPage extends BorderPane{
     }
     
     // Returning the value of the foodFromRefillingPage button
-    public Label[] getFoodFromRefillingPage(){
-    	return foodFromRefillingPage;
-    }
-    
-    // Returning the value of the foodFromRefillingPage button
     public Button[] getRemoveFoodFromRefillingPage(){
     	return removeFoodFromRefillingPage;
     }

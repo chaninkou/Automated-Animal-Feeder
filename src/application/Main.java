@@ -42,7 +42,7 @@ public class Main extends Application {
 			WhatToDispensePage whatToDispensePage = new WhatToDispensePage();
 
 			// Making a new button for the foodFromRefillingPage button from menuPage
-			Label[] foodFromRefillPageButton = menuPage.getFoodFromRefillingPage();
+			Button[] foodFromRefillPageButton = whatToDispensePage.getFoodFromRefillingPage();
 			
 			Scene scene = new Scene(homePage);
 			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
@@ -70,7 +70,7 @@ public class Main extends Application {
 			loadingScreenController(scene, feedingLogPage, loadingScreen);
 			
 			// Controller for what to dispense page
-			whatToDispensePageController(menuPage, scene, feedingLogPage, loadingScreen, whatToDispensePage);
+			whatToDispensePageController(menuPage, scene, loadingScreen, whatToDispensePage, foodFromRefillPageButton);
 			
 			primaryStage.setScene(scene);
 			primaryStage.setWidth(1200);
@@ -188,25 +188,10 @@ public class Main extends Application {
 		feedingLogPage.getToMenuPage().setOnAction(e -> scene.setRoot(menuPage));
 	}
 	
-	//this is for settings page
+	// This is for settings page
 	public void settingPageController(MenuPage menuPage, Scene scene, SettingsPage settingsPage) {
 		settingsPage.getToMenuPage().setOnAction(e -> scene.setRoot(menuPage));
 	}
-	
-	
-	public void whatToDispensePageController(MenuPage menuPage, Scene scene, FeedingLogPage feedingLogPage,LoadingScreen loadingScreen, WhatToDispensePage whatToDispensePage) {
-		whatToDispensePage.getToMenuPage().setOnAction(e -> scene.setRoot(menuPage));
-		
-		//When user clicks the dispense button
-//		menuPage.getDispenseButton().setOnAction(e -> {
-//			scene.setRoot(loadingScreen);
-//			loadingScreen.loadingBar(90000000);
-//		});	
-		
-	}
-	
-	
-	
 	
 	
 	// This is the controller for the loading screen 
@@ -214,6 +199,36 @@ public class Main extends Application {
 		loadingScreen.getFinished().setOnAction(e -> {
 			scene.setRoot(feedingLogPage);
 		});
+	}
+	
+	// Controller for what to dispense page
+	public void whatToDispensePageController(MenuPage menuPage, Scene scene,LoadingScreen loadingScreen, WhatToDispensePage whatToDispensePage, Button[] foodFromRefillPageButton) {
+		whatToDispensePage.getToMenuPage().setOnAction(e -> scene.setRoot(menuPage));
+		
+		// For the first choice
+		foodFromRefillPageButton[0].setOnAction(e -> {
+			if(SelectedPetFood.petFoodArray[0] != null){
+				scene.setRoot(loadingScreen);
+				loadingScreen.loadingBar(90000000);
+			}
+		});
+		
+		// For the second choice
+		foodFromRefillPageButton[1].setOnAction(e -> {
+			if(SelectedPetFood.petFoodArray[1] != null){
+				scene.setRoot(loadingScreen);
+				loadingScreen.loadingBar(90000000);
+			}
+		});
+		
+		// For the third choice
+		foodFromRefillPageButton[2].setOnAction(e -> {
+			if(SelectedPetFood.petFoodArray[2] != null){
+				scene.setRoot(loadingScreen);
+				loadingScreen.loadingBar(90000000);
+			}
+		});
+		
 	}
 	
 

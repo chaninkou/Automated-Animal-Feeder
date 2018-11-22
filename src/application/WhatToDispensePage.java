@@ -68,9 +68,9 @@ public class WhatToDispensePage extends BorderPane{
 		for(int k = 0; k < foodFromRefillingPage.length; k++){
 			// Making a button
 			Button selectedBoxInMenu = new Button();
-
-			// Will do CSS for this
-			// selectedBoxInMenu.getStyleClass().add("selectedBoxInMenu");
+			
+			selectedBoxInMenu.getStyleClass().add("selectedBoxInDispensePage");
+			selectedBoxInMenu.setId("selectedBoxInDispensePage" + k);
 			
 			if(k == 0){
 				selectedBoxInMenu.setText("Please Press Refill for the 1st Pet Food");

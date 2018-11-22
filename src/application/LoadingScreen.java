@@ -11,7 +11,6 @@ import javafx.scene.layout.VBox;
 public class LoadingScreen extends BorderPane {
 	
 	private Button finished;
-	private Label message;
 	
 	
 	public LoadingScreen(){
