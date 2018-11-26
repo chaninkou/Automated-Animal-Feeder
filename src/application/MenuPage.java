@@ -58,21 +58,13 @@ public class MenuPage extends BorderPane{
 		toHomePage = new Button("Back");
 		toHomePage.setId("back");
 		
-		// Delete first
-		removeFoodFromRefillingPage[0] = new Button("X");
-		
-		// Delete second
-		removeFoodFromRefillingPage[1] = new Button("X");
-		
-		// Delete third
-		removeFoodFromRefillingPage[2] = new Button("X");
 	
 		// Setting for HBox
 		hbox.setPadding(new Insets(30, 0, 0, 50));
 		hbox.setSpacing(100);
 		hbox.setAlignment(Pos.TOP_LEFT);
 		
-		hbox.getChildren().addAll(toHomePage, removeFoodFromRefillingPage[0], removeFoodFromRefillingPage[1], removeFoodFromRefillingPage[2]);
+		hbox.getChildren().addAll(toHomePage);
 		setTop(hbox);
 	}
 	
@@ -84,9 +76,12 @@ public class MenuPage extends BorderPane{
 		for(int k = 0; k < foodFromRefillingPage.length; k++){
 			// Making a button
 			Label selectedBoxInMenu = new Label();
+			
+			// Adding the three button
+			removeFoodFromRefillingPage[k] = new Button("X");
+			
+			// CSS style
 			selectedBoxInMenu.getStyleClass().add("selectedBoxInMenu");
-			// Will do CSS for this
-			// selectedBoxInMenu.getStyleClass().add("selectedBoxInMenu");
 			selectedBoxInMenu.setId("selectedBoxInMenu" + k);
 			if(k == 0){
 				selectedBoxInMenu.setText("Please Press Refill for the 1st Pet Food");
@@ -97,12 +92,25 @@ public class MenuPage extends BorderPane{
 			}
 		
 			this.foodFromRefillingPage[k] = selectedBoxInMenu;
-			hbox.getChildren().add(selectedBoxInMenu);
+			
+//          This will work too
+//			hbox.getChildren().addAll(selectedBoxInMenu, removeFoodFromRefillingPage[k]);
+			if (k==0){
+				hbox.getChildren().addAll(selectedBoxInMenu, removeFoodFromRefillingPage[0]);
+				
+			}
+			if (k==1){
+				hbox.getChildren().addAll(selectedBoxInMenu, removeFoodFromRefillingPage[1]);
+			}
+			if(k==2){
+				hbox.getChildren().addAll(selectedBoxInMenu, removeFoodFromRefillingPage[2]);
+			}
+
 		}
 		
-		hbox.setPadding(new Insets(30, 0, 0, 50));
-		hbox.setSpacing(100);
-		hbox.setAlignment(Pos.CENTER);
+		hbox.setPadding(new Insets(150, 0, 0, 50));
+		hbox.setSpacing(10);
+		hbox.setAlignment(Pos.TOP_CENTER);
 		
 		setCenter(hbox);
 	}

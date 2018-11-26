@@ -140,7 +140,12 @@ public class Main extends Application {
 			if (deleteButtons[0] != null){
 				deleteButtons[0].setOnAction(event -> {
 					SelectedPetFood.deletePetFood(0);
+					
+					// Update the display of the pet food when user press delete on menu page
 					menuPage.changeDefaultDisplayPetFood();
+					
+					// Update the display of the pet food in dispense page when user press delete on menu page
+					whatToDispensePage.changeDefaultDisplayPetFood();
 					scene.setRoot(menuPage);
 				});
 			}
@@ -149,7 +154,12 @@ public class Main extends Application {
 			if (deleteButtons[1] != null){
 				deleteButtons[1].setOnAction(event -> {
 					SelectedPetFood.deletePetFood(1);
+					
+					// Update the display of the pet food when user press delete on menu page
 					menuPage.changeDefaultDisplayPetFood();
+					
+					// Update the display of the pet food in dispense page when user press delete on menu page
+					whatToDispensePage.changeDefaultDisplayPetFood();
 					scene.setRoot(menuPage);
 				});
 			}
@@ -158,7 +168,12 @@ public class Main extends Application {
 			if (deleteButtons[2] != null){
 				deleteButtons[2].setOnAction(event -> {
 					SelectedPetFood.deletePetFood(2);
+					
+					// Update the display of the pet food when user press delete on menu page
 					menuPage.changeDefaultDisplayPetFood();
+					
+					// Update the display of the pet food in dispense page when user press delete on menu page
+					whatToDispensePage.changeDefaultDisplayPetFood();
 					scene.setRoot(menuPage);
 				});
 			}
