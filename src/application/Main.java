@@ -1,12 +1,12 @@
 package application;
 	
+import backend.FeedLogInformation;
 import backend.InformationRetrieve;
 import backend.SelectedPetFood;
 import javafx.application.Application;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 
 
@@ -44,6 +44,9 @@ public class Main extends Application {
 			// Making a new button for the foodFromRefillingPage button from menuPage
 			Button[] foodFromRefillPageButton = whatToDispensePage.getFoodFromRefillingPage();
 			
+			// Calling the dispense selection
+			FeedLogInformation feedLogInformation = new FeedLogInformation();
+			
 			Scene scene = new Scene(homePage);
 			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			
@@ -70,7 +73,7 @@ public class Main extends Application {
 			loadingScreenController(scene, feedingLogPage, loadingScreen);
 			
 			// Controller for what to dispense page
-			whatToDispensePageController(menuPage, scene, loadingScreen, whatToDispensePage, foodFromRefillPageButton);
+			whatToDispensePageController(menuPage, scene, loadingScreen, whatToDispensePage, foodFromRefillPageButton, feedLogInformation);
 			
 			primaryStage.setScene(scene);
 			primaryStage.setWidth(1200);
@@ -217,30 +220,50 @@ public class Main extends Application {
 	}
 	
 	// Controller for what to dispense page
-	public void whatToDispensePageController(MenuPage menuPage, Scene scene,LoadingScreen loadingScreen, WhatToDispensePage whatToDispensePage, Button[] foodFromRefillPageButton) {
+	public void whatToDispensePageController(MenuPage menuPage, Scene scene,LoadingScreen loadingScreen, WhatToDispensePage whatToDispensePage, Button[] foodFromRefillPageButton, FeedLogInformation feedLogInformation) {
 		whatToDispensePage.getToMenuPage().setOnAction(e -> scene.setRoot(menuPage));
+		int loadingTime = 100000000;
 		
 		// For the first choice
 		foodFromRefillPageButton[0].setOnAction(e -> {
 			if(SelectedPetFood.petFoodArray[0] != null){
+				// Adding the first choice of pet food into the array list
+				FeedLogInformation.addDispense(0);
+				System.out.println(feedLogInformation.toString());
 				scene.setRoot(loadingScreen);
-				loadingScreen.loadingBar(90000000);
+				
+				// This is for the time it loads
+				loadingScreen.loadingBar(loadingTime);
 			}
 		});
 		
 		// For the second choice
 		foodFromRefillPageButton[1].setOnAction(e -> {
 			if(SelectedPetFood.petFoodArray[1] != null){
+				// Adding the second choice of pet food into the array list
+				FeedLogInformation.addDispense(1);
+				
+				// Printing it out on console to check if its working
+				System.out.println(feedLogInformation.toString());
 				scene.setRoot(loadingScreen);
-				loadingScreen.loadingBar(90000000);
+				
+				// This is for the time it loads
+				loadingScreen.loadingBar(loadingTime);
 			}
 		});
 		
 		// For the third choice
 		foodFromRefillPageButton[2].setOnAction(e -> {
 			if(SelectedPetFood.petFoodArray[2] != null){
+				// Adding the third choice of pet food into the array list
+				FeedLogInformation.addDispense(2);
+				
+				// Printing it out on console to check if its working
+				System.out.println(feedLogInformation.toString());
 				scene.setRoot(loadingScreen);
-				loadingScreen.loadingBar(90000000);
+				
+				// This is for the time it loads
+				loadingScreen.loadingBar(loadingTime);
 			}
 		});
 		

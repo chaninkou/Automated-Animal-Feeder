@@ -114,7 +114,6 @@ public class WhatToDispensePage extends BorderPane{
 				foodFromRefillingPage[k].setGraphic(imageView);
 			} else {
 				// Set the image to null and still display the rest of the image
-				System.out.println("testing");
 				if(k == 0){
 					foodFromRefillingPage[k].setText("Please Press Refill for the 1st Pet Food");
 					foodFromRefillingPage[k].setGraphic(null);
@@ -128,16 +127,16 @@ public class WhatToDispensePage extends BorderPane{
 			}
 		}
 		
-		// For future delete button
-		if(foodFromRefillingPage[0].getGraphic() != null){
-			System.out.println("1");
-		}
-		if(foodFromRefillingPage[1].getGraphic() != null){
-			System.out.println("2");
-		}
-		if(foodFromRefillingPage[2].getGraphic() != null){
-			System.out.println("3");
-		}
+//		// For future delete button
+//		if(foodFromRefillingPage[0].getGraphic() != null){
+//			System.out.println("1");
+//		}
+//		if(foodFromRefillingPage[1].getGraphic() != null){
+//			System.out.println("2");
+//		}
+//		if(foodFromRefillingPage[2].getGraphic() != null){
+//			System.out.println("3");
+//		}
 		
 	}
 	
