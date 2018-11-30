@@ -8,6 +8,9 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.TextAlignment;
+import javafx.scene.control.ScrollPane;
+import javafx.scene.control.Label;
 
 public class FeedingLogPage extends BorderPane{
 	private Button toMenuPage;
@@ -22,14 +25,17 @@ public class FeedingLogPage extends BorderPane{
 		imageView.setPreserveRatio(false);
 		imageView.setSmooth(true);
 		imageView.setCache(true);
-		
 		VBox pane = new VBox();
+		
+		
 		
 		pane.getChildren().add(imageView);
 
 		getChildren().add(pane);
 		
+		
 		topPart();
+		centerPart();
 		bottomPart();
 	}
 	
@@ -47,6 +53,31 @@ public class FeedingLogPage extends BorderPane{
 		setTop(hbox);
 	}
 	
+	public void centerPart() {
+		VBox messageBox = new VBox();
+		VBox content = new VBox();
+		ScrollPane scroll = new ScrollPane();
+		Label testing = new Label("Testing");
+		
+		messageBox.getChildren().add(scroll);
+	
+		content.getChildren().add(testing);
+		
+		for(int i = 2; i<45; i++) {
+			content.getChildren().add(new Label(i+"testing"));
+			
+		}
+		scroll.setMaxSize(500,300);
+		scroll.setPrefSize(500,250);
+		scroll.setContent(content);
+		
+		messageBox.setAlignment(Pos.CENTER);
+		setCenter(messageBox);
+		
+	}
+	
+	
+	
 	public void bottomPart() {
 		HBox bottomBox = new HBox();
 		Button save = new Button("Save");
@@ -55,7 +86,7 @@ public class FeedingLogPage extends BorderPane{
 		bottomBox.setSpacing(50);
 		bottomBox.setAlignment(Pos.BOTTOM_CENTER);
 		bottomBox.getChildren().addAll(save,clear);
-		setCenter(bottomBox);
+		setBottom(bottomBox);
 	}
 	// Returning the value of toMenuPage
     public Button getToMenuPage(){
