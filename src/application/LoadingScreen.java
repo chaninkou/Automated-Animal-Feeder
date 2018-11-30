@@ -11,12 +11,11 @@ import javafx.scene.layout.VBox;
 public class LoadingScreen extends BorderPane {
 	
 	private Button finished;
-	private Label message;
 	
 	
 	public LoadingScreen(){
 		finished = new Button ("Click to finished");
-		setTop(message);
+		
 	}
 	
 	public void loadingBar(int loadingTime){
@@ -48,7 +47,7 @@ public class LoadingScreen extends BorderPane {
 		};
 		
 		ProgressBar progressBar = new ProgressBar();
-		progressBar.setMinWidth(700);
+		progressBar.setMinWidth(750);
 		progressBar.setMinHeight(60);
 		progressBar.progressProperty().bind(task.progressProperty());
 		

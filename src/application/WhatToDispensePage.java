@@ -11,20 +11,13 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
-public class MenuPage extends BorderPane{
-	private Button refill;
-	private Button storage;
-	private Button feedingLog;
-	private Button setting;
-	private Button dispense;
-	private Button toHomePage;
-	private Label[] foodFromRefillingPage = new Label[3];
-	private Button[] removeFoodFromRefillingPage = new Button[3];
+public class WhatToDispensePage extends BorderPane{
+	private Button toMenuPage;
+	private Label title;
+	private Button[] foodFromRefillingPage = new Button[3];
 	
 	
-	
-	
-	public MenuPage(){
+	public WhatToDispensePage(){
 		Image image = new Image("backgroundPicture/menuPage.jpg");
 		ImageView imageView = new ImageView(image);
 		
@@ -45,9 +38,7 @@ public class MenuPage extends BorderPane{
 		
 		// Calling the middle 3 boxes
 		displayPetFood();
-		
-		// Calling the bottom Menu
-		bottomPart();
+
 	}
 	
 	// All this is just a back button on top that goes back to home page.
@@ -55,16 +46,17 @@ public class MenuPage extends BorderPane{
 		HBox hbox = new HBox();
 		
 		// Back to home page button
-		toHomePage = new Button("Back");
-		toHomePage.setId("back");
-		
+		toMenuPage = new Button("Back");
+		toMenuPage.setId("back");
 	
+		title = new Label("Select one of the following to dispense");
+		
 		// Setting for HBox
 		hbox.setPadding(new Insets(30, 0, 0, 50));
 		hbox.setSpacing(100);
 		hbox.setAlignment(Pos.TOP_LEFT);
 		
-		hbox.getChildren().addAll(toHomePage);
+		hbox.getChildren().addAll(toMenuPage, title);
 		setTop(hbox);
 	}
 	
@@ -75,14 +67,11 @@ public class MenuPage extends BorderPane{
 		// 3 since petFoodArray.length from SelectedPetFood is 3
 		for(int k = 0; k < foodFromRefillingPage.length; k++){
 			// Making a button
-			Label selectedBoxInMenu = new Label();
+			Button selectedBoxInMenu = new Button();
 			
-			// Adding the three button
-			removeFoodFromRefillingPage[k] = new Button("X");
+			selectedBoxInMenu.getStyleClass().add("selectedBoxInDispensePage");
+			selectedBoxInMenu.setId("selectedBoxInDispensePage" + k);
 			
-			// CSS style
-			selectedBoxInMenu.getStyleClass().add("selectedBoxInMenu");
-			selectedBoxInMenu.setId("selectedBoxInMenu" + k);
 			if(k == 0){
 				selectedBoxInMenu.setText("Please Press Refill for the 1st Pet Food");
 			}else if(k == 1){
@@ -92,67 +81,14 @@ public class MenuPage extends BorderPane{
 			}
 		
 			this.foodFromRefillingPage[k] = selectedBoxInMenu;
-			
-//          This will work too
-//			hbox.getChildren().addAll(selectedBoxInMenu, removeFoodFromRefillingPage[k]);
-			if (k==0){
-				hbox.getChildren().addAll(selectedBoxInMenu, removeFoodFromRefillingPage[0]);
-				
-			}
-			if (k==1){
-				hbox.getChildren().addAll(selectedBoxInMenu, removeFoodFromRefillingPage[1]);
-			}
-			if(k==2){
-				hbox.getChildren().addAll(selectedBoxInMenu, removeFoodFromRefillingPage[2]);
-			}
-
+			hbox.getChildren().add(selectedBoxInMenu);
 		}
 		
-		hbox.setPadding(new Insets(150, 0, 0, 50));
-		hbox.setSpacing(10);
-		hbox.setAlignment(Pos.TOP_CENTER);
-		
-		setCenter(hbox);
-	}
-	
-	public void bottomPart(){
-		// Creating a HBox
-		HBox hbox = new HBox();
-		
-		
-		// Making a refill button
-		refill = new Button("Refill");
-		refill.setId("refill");
-		
-		// Making a storage button
-		storage = new Button("Storage");
-		storage.setId("storage");
-		
-		// Making a feeding log button
-		feedingLog = new Button("Feeding Log");
-		feedingLog.setId("feedingLog");
-		
-		// Making a feeding log button
-		setting = new Button("Settings");
-		setting.setId("settings");
-		
-		// Making a feeding log button
-		dispense = new Button("DISPENSE");
-		
-		dispense.setId("dispense");
-		dispense.getStyleClass().add("dispense");
-		
-		hbox.setPadding(new Insets(0,0,30,0));
-		hbox.setSpacing(50);
-		
-		// Setting the buttons to the center
+		hbox.setPadding(new Insets(30, 0, 0, 50));
+		hbox.setSpacing(100);
 		hbox.setAlignment(Pos.CENTER);
 		
-		// Adding all the children
-		hbox.getChildren().addAll(refill,storage,feedingLog, setting, dispense);
-		
-		// Need this to set it to the bottom of the GUI
-		setBottom(hbox);
+		setCenter(hbox);
 	}
 	
 	// Only call this method after user select a pet food from refilling page
@@ -207,38 +143,14 @@ public class MenuPage extends BorderPane{
 	
 	
 	// Returning the value of toHomePage
-    public Button getToHomePage(){
-        return toHomePage;
+    public Button getToMenuPage(){
+        return toMenuPage;
     }
     
-    // Returning the value of refill button
-    public Button getToRefillPage() {
-    	return refill;
-    }
-    
-    // Returning the value of storage button
-    public Button getToStoragePage() {
-    	return storage;
-    }
-    
-    // Returning the value of storage button
-    public Button getToFeedingLogPage() {
-    	return feedingLog;
-    }
- // Returning the value of toHomePage
-    public Button getToSettingsPage(){
-        return setting;
-    }
     
     // Returning the value of the foodFromRefillingPage button
-    public Button[] getRemoveFoodFromRefillingPage(){
-    	return removeFoodFromRefillingPage;
+    public Button[] getFoodFromRefillingPage(){
+    	return foodFromRefillingPage;
     }
-    
-    // Returning the value of the dispense button
-    public Button getDispenseButton(){
-    	return dispense;
-    }
-    
-	
+ 	
 }

@@ -1,5 +1,6 @@
 package application;
 	
+import backend.FeedLogInformation;
 import backend.InformationRetrieve;
 import backend.SelectedPetFood;
 import javafx.application.Application;
@@ -36,9 +37,15 @@ public class Main extends Application {
 			
 			// Calling the loading screen page
 			LoadingScreen loadingScreen = new LoadingScreen();
+			
+			// Calling the what to dispense page
+			WhatToDispensePage whatToDispensePage = new WhatToDispensePage();
 
 			// Making a new button for the foodFromRefillingPage button from menuPage
-			Button[] foodFromRefillPageButton = menuPage.getFoodFromRefillingPage();
+			Button[] foodFromRefillPageButton = whatToDispensePage.getFoodFromRefillingPage();
+			
+			// Calling the dispense selection
+			FeedLogInformation feedLogInformation = new FeedLogInformation();
 			
 			Scene scene = new Scene(homePage);
 			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
@@ -48,10 +55,10 @@ public class Main extends Application {
 			homePageController(menuPage, scene, homePage);
 			
 			// Menu page
-			menuPageController(menuPage, scene, homePage, refillPage, storagePage, feedingLogPage,settingsPage,loadingScreen);
+			menuPageController(menuPage, scene, homePage, refillPage, storagePage, feedingLogPage,settingsPage, whatToDispensePage);
 			
 			// Refill page
-			refillPageController(menuPage, scene, refillPage);
+			refillPageController(menuPage, scene, refillPage, whatToDispensePage);
 			
 			// Storage Page
 			storagePageController(menuPage, scene, storagePage);
@@ -61,12 +68,12 @@ public class Main extends Application {
 			
 			//Setting Page Controller
 			settingPageController(menuPage,scene,settingsPage);
-
-			// A controller for getting the button foodFromRefillPageButton
-			foodFromRefillPageController(scene, foodFromRefillPageButton);
 			
 			// A controller for the loading screen page
 			loadingScreenController(scene, feedingLogPage, loadingScreen);
+			
+			// Controller for what to dispense page
+			whatToDispensePageController(menuPage, scene, loadingScreen, whatToDispensePage, foodFromRefillPageButton, feedLogInformation);
 			
 			primaryStage.setScene(scene);
 			primaryStage.setWidth(1200);
@@ -101,7 +108,7 @@ public class Main extends Application {
 	}
 	
 	// This is for the menu page
-	public void menuPageController(MenuPage menuPage, Scene scene, HomeStartPage homePage, RefillPage refillPage, StoragePage storagePage, FeedingLogPage feedingLogPage,SettingsPage settings, LoadingScreen loadingScreen){
+	public void menuPageController(MenuPage menuPage, Scene scene, HomeStartPage homePage, RefillPage refillPage, StoragePage storagePage, FeedingLogPage feedingLogPage,SettingsPage settings, WhatToDispensePage whatToDispensePage){
 			menuPage.getToHomePage().setOnAction(e -> scene.setRoot(homePage));
 			
 			// When user click refill button
@@ -126,8 +133,7 @@ public class Main extends Application {
 
 			//When user clicks the dispense button
 			menuPage.getDispenseButton().setOnAction(e -> {
-				scene.setRoot(loadingScreen);
-				loadingScreen.loadingBar(90000000);
+				scene.setRoot(whatToDispensePage);
 			});	
 			
 			// Making a array of delete button
@@ -137,7 +143,12 @@ public class Main extends Application {
 			if (deleteButtons[0] != null){
 				deleteButtons[0].setOnAction(event -> {
 					SelectedPetFood.deletePetFood(0);
+					
+					// Update the display of the pet food when user press delete on menu page
 					menuPage.changeDefaultDisplayPetFood();
+					
+					// Update the display of the pet food in dispense page when user press delete on menu page
+					whatToDispensePage.changeDefaultDisplayPetFood();
 					scene.setRoot(menuPage);
 				});
 			}
@@ -146,7 +157,12 @@ public class Main extends Application {
 			if (deleteButtons[1] != null){
 				deleteButtons[1].setOnAction(event -> {
 					SelectedPetFood.deletePetFood(1);
+					
+					// Update the display of the pet food when user press delete on menu page
 					menuPage.changeDefaultDisplayPetFood();
+					
+					// Update the display of the pet food in dispense page when user press delete on menu page
+					whatToDispensePage.changeDefaultDisplayPetFood();
 					scene.setRoot(menuPage);
 				});
 			}
@@ -155,20 +171,26 @@ public class Main extends Application {
 			if (deleteButtons[2] != null){
 				deleteButtons[2].setOnAction(event -> {
 					SelectedPetFood.deletePetFood(2);
+					
+					// Update the display of the pet food when user press delete on menu page
 					menuPage.changeDefaultDisplayPetFood();
+					
+					// Update the display of the pet food in dispense page when user press delete on menu page
+					whatToDispensePage.changeDefaultDisplayPetFood();
 					scene.setRoot(menuPage);
 				});
 			}
 	}
 	
 	// This is for the refill page
-	public void refillPageController(MenuPage menuPage, Scene scene, RefillPage refillPage) {
+	public void refillPageController(MenuPage menuPage, Scene scene, RefillPage refillPage, WhatToDispensePage whatToDispensePage) {
 		refillPage.getToMenuPage().setOnAction(e -> scene.setRoot(menuPage));
 		refillPage.getSelectedButton().setOnAction(e -> {
 			SelectedPetFood.addPetFood(RefillPage.selectedPicture);
 			
 			// Call this when user select pet food
 			menuPage.changeDefaultDisplayPetFood();
+			whatToDispensePage.changeDefaultDisplayPetFood();
 			
 			scene.setRoot(menuPage);
 		});
@@ -184,22 +206,67 @@ public class Main extends Application {
 		feedingLogPage.getToMenuPage().setOnAction(e -> scene.setRoot(menuPage));
 	}
 	
-	//this is for settings page
+	// This is for settings page
 	public void settingPageController(MenuPage menuPage, Scene scene, SettingsPage settingsPage) {
 		settingsPage.getToMenuPage().setOnAction(e -> scene.setRoot(menuPage));
 	}
 	
-
-	// This is the controller for the foodFromRefillPageButton
-	public void foodFromRefillPageController(Scene scene, Button[] foodFromRefillPageButton){
-		
-	}
-
+	
 	// This is the controller for the loading screen 
 	public void loadingScreenController(Scene scene, FeedingLogPage feedingLogPage, LoadingScreen loadingScreen){
 		loadingScreen.getFinished().setOnAction(e -> {
 			scene.setRoot(feedingLogPage);
 		});
+	}
+	
+	// Controller for what to dispense page
+	public void whatToDispensePageController(MenuPage menuPage, Scene scene,LoadingScreen loadingScreen, WhatToDispensePage whatToDispensePage, Button[] foodFromRefillPageButton, FeedLogInformation feedLogInformation) {
+		whatToDispensePage.getToMenuPage().setOnAction(e -> scene.setRoot(menuPage));
+		int loadingTime = 100000000;
+		
+		// For the first choice
+		foodFromRefillPageButton[0].setOnAction(e -> {
+			if(SelectedPetFood.petFoodArray[0] != null){
+				// Adding the first choice of pet food into the array list
+				FeedLogInformation.addDispense(0);
+				System.out.println(feedLogInformation.toString());
+				scene.setRoot(loadingScreen);
+				
+				// This is for the time it loads
+				loadingScreen.loadingBar(loadingTime);
+			}
+		});
+		
+		// For the second choice
+		foodFromRefillPageButton[1].setOnAction(e -> {
+			if(SelectedPetFood.petFoodArray[1] != null){
+				// Adding the second choice of pet food into the array list
+				FeedLogInformation.addDispense(1);
+				
+				// Printing it out on console to check if its working
+				System.out.println(feedLogInformation.toString());
+				scene.setRoot(loadingScreen);
+				
+				// This is for the time it loads
+				loadingScreen.loadingBar(loadingTime);
+			}
+		});
+		
+		// For the third choice
+		foodFromRefillPageButton[2].setOnAction(e -> {
+			if(SelectedPetFood.petFoodArray[2] != null){
+				// Adding the third choice of pet food into the array list
+				FeedLogInformation.addDispense(2);
+				
+				// Printing it out on console to check if its working
+				System.out.println(feedLogInformation.toString());
+				scene.setRoot(loadingScreen);
+				
+				// This is for the time it loads
+				loadingScreen.loadingBar(loadingTime);
+			}
+		});
+		
 	}
 	
 
