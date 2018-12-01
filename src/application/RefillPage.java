@@ -190,10 +190,13 @@ public class RefillPage extends BorderPane{
 		
 		selectedButton = new Button("Select");
 	
-		
 		VBox information = new VBox();
 		
 		information.getChildren().addAll(name, petKind, ingredient, dailyFeeding);
+		
+		// Adding CSS style
+		information.setId("informationVBox");
+		information.getStyleClass().add("informationVBox");
 		
 		selectedInformation.getChildren().addAll(pictureOfSelected, information, selectedButton);
 		
@@ -235,6 +238,10 @@ public class RefillPage extends BorderPane{
 		VBox information = new VBox();
 		
 		information.getChildren().addAll(name, petKind, ingredient, dailyFeeding);
+		
+		// Adding CSS style
+		information.setId("informationVBox");
+		information.getStyleClass().add("informationVBox");
 		
 		// We need this to set and change the picture that is suppose to show up
 		this.selectedInformation.getChildren().set(0, pictureOfSelected);
