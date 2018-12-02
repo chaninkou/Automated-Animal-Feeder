@@ -26,9 +26,9 @@ public class HomeStartPage extends StackPane{
 		// Setting the image view
 		ImageView imageView = new ImageView(image);
 		
-		imageView.setFitHeight(700);
+		imageView.setFitHeight(1000);
 		
-		imageView.setFitWidth(1200);
+		imageView.setFitWidth(1800);
 		
 		imageView.setPreserveRatio(false);
 		

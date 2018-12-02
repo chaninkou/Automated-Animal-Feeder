@@ -76,8 +76,8 @@ public class Main extends Application {
 			whatToDispensePageController(menuPage, scene, loadingScreen, whatToDispensePage, foodFromRefillPageButton, feedLogInformation);
 			
 			primaryStage.setScene(scene);
-			primaryStage.setWidth(1200);
-			primaryStage.setHeight(700);
+			primaryStage.setWidth(1800);
+			primaryStage.setHeight(1000);
 	        
 			// The user will not be able to maximize the screen
 			primaryStage.setResizable(false);
