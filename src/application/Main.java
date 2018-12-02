@@ -73,7 +73,7 @@ public class Main extends Application {
 			loadingScreenController(scene, feedingLogPage, loadingScreen);
 			
 			// Controller for what to dispense page
-			whatToDispensePageController(menuPage, scene, loadingScreen, whatToDispensePage, foodFromRefillPageButton, feedLogInformation);
+			whatToDispensePageController(menuPage, scene, loadingScreen, whatToDispensePage, foodFromRefillPageButton, feedLogInformation, feedingLogPage);
 			
 			primaryStage.setScene(scene);
 			primaryStage.setWidth(1800);
@@ -220,7 +220,7 @@ public class Main extends Application {
 	}
 	
 	// Controller for what to dispense page
-	public void whatToDispensePageController(MenuPage menuPage, Scene scene,LoadingScreen loadingScreen, WhatToDispensePage whatToDispensePage, Button[] foodFromRefillPageButton, FeedLogInformation feedLogInformation) {
+	public void whatToDispensePageController(MenuPage menuPage, Scene scene,LoadingScreen loadingScreen, WhatToDispensePage whatToDispensePage, Button[] foodFromRefillPageButton, FeedLogInformation feedLogInformation, FeedingLogPage feedingLogPage) {
 		whatToDispensePage.getToMenuPage().setOnAction(e -> scene.setRoot(menuPage));
 		int loadingTime = 100000000;
 		
@@ -229,6 +229,7 @@ public class Main extends Application {
 			if(SelectedPetFood.petFoodArray[0] != null){
 				// Adding the first choice of pet food into the array list
 				FeedLogInformation.addDispense(0);
+				feedingLogPage.updatedLog();
 				System.out.println(feedLogInformation.toString());
 				scene.setRoot(loadingScreen);
 				
@@ -242,7 +243,7 @@ public class Main extends Application {
 			if(SelectedPetFood.petFoodArray[1] != null){
 				// Adding the second choice of pet food into the array list
 				FeedLogInformation.addDispense(1);
-				
+				feedingLogPage.updatedLog();
 				// Printing it out on console to check if its working
 				System.out.println(feedLogInformation.toString());
 				scene.setRoot(loadingScreen);
@@ -257,7 +258,7 @@ public class Main extends Application {
 			if(SelectedPetFood.petFoodArray[2] != null){
 				// Adding the third choice of pet food into the array list
 				FeedLogInformation.addDispense(2);
-				
+				feedingLogPage.updatedLog();
 				// Printing it out on console to check if its working
 				System.out.println(feedLogInformation.toString());
 				scene.setRoot(loadingScreen);
