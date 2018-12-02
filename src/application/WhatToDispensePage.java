@@ -13,7 +13,7 @@ import javafx.scene.layout.VBox;
 
 public class WhatToDispensePage extends BorderPane{
 	private Button toMenuPage;
-	private Label title;
+	private Label dispensePageMessage;
 	private Button[] foodFromRefillingPage = new Button[3];
 	
 	
@@ -48,15 +48,17 @@ public class WhatToDispensePage extends BorderPane{
 		// Back to home page button
 		toMenuPage = new Button("Back");
 		toMenuPage.setId("back");
-	
-		title = new Label("Select one of the following to dispense");
+		toMenuPage.getStyleClass().add("backButtons");
+		
+		dispensePageMessage = new Label("Select one of the following to dispense");
+		dispensePageMessage.getStyleClass().add("dispensePageMessage");
 		
 		// Setting for HBox
 		hbox.setPadding(new Insets(30, 0, 0, 50));
 		hbox.setSpacing(100);
 		hbox.setAlignment(Pos.TOP_LEFT);
 		
-		hbox.getChildren().addAll(toMenuPage, title);
+		hbox.getChildren().addAll(toMenuPage, dispensePageMessage);
 		setTop(hbox);
 	}
 	

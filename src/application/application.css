@@ -1,7 +1,7 @@
 /* JavaFX CSS - Leave this comment until you have at least create one rule which uses -fx-Property */
 .informationVBox {
 	-fx-background-color: white;
-	-fx-padding: 50 50 50 50;
+	-fx-padding: 20 20 20 20;
     	-fx-font-family: "Helvetica";
 	    -fx-font-size: 30px;
 	    -fx-font-weight: bold;
@@ -29,9 +29,9 @@
 }
 
 .backButtons{
-	-fx-padding: 25 25 25 25;
+	-fx-padding: 10 10 10 10;
 	-fx-font-family: "Helvetica";
-    -fx-font-size: 38px;
+    -fx-font-size: 15px;
     -fx-font-weight: bold;
 }
 .menuPageButtons {
@@ -41,13 +41,40 @@
     -fx-font-size: 38px;
     -fx-font-weight: bold;
 }
-
+.dispensePageMessage{
+	-fx-background-color: white;
+	-fx-font-family: "Helvetica";
+	-fx-font-size: 70px;
+	-fx-font-weight: bold;
+	-fx-border-color: black;
+}
+.menuTopMessage{
+	-fx-alignment: center ;
+    -fx-padding: 0  ;
+	-fx-background-color: #ffff00;
+	-fx-font-family: "Helvetica";
+	-fx-font-size: 35px;
+	-fx-font-weight: bold;
+	-fx-border-color: black;
+}
 .title{
 	-fx-font-family: "Helvetica";
 	-fx-font-size: 70px;
 	-fx-font-weight: bold;
 }
+.refillPageSelectButton{
+	-fx-padding: 10 10 10 10;
+	-fx-font-family: "Helvetica";
+    -fx-font-size: 35px;
+    -fx-font-weight: bold;
+}
 
+.finishedButton{
+	-fx-padding: 10 10 10 10;
+	-fx-font-family: "Helvetica";
+    -fx-font-size: 35px;
+    -fx-font-weight: bold;
+}
 .message{
 	-fx-font-family: "Helvetica";
 	-fx-font-size: 40px;
@@ -101,12 +128,12 @@
 #selectedBoxInDispensePage0{
 	-fx-border-color: black;
 	-fx-border-width: 2;
-	-fx-pref-widith: 1000;
-	-fx-pref-height: 800;
+	-fx-pref-widith: 900;
+	-fx-pref-height: 700;
 	-fx-min-widith: 1200;
-	-fx-max-height: 800;
+	-fx-max-height: 700;
 	-fx-font-family: "Helvetica";
-  	-fx-font-size: 35px;
+  	-fx-font-size: 32px;
     -fx-font-weight: bold;
 	-fx-background-color: white;
 }
@@ -114,12 +141,12 @@
 #selectedBoxInDispensePage1{
 	-fx-border-color: black;
 	-fx-border-width: 2;
-	-fx-pref-widith: 1000;
-	-fx-pref-height: 800;
+	-fx-pref-widith: 900;
+	-fx-pref-height: 700;
 	-fx-min-widith: 1200;
-	-fx-max-height: 800;
+	-fx-max-height: 700;
 	-fx-font-family: "Helvetica";
-  	-fx-font-size: 35px;
+  	-fx-font-size: 32px;
     -fx-font-weight: bold;
 	-fx-background-color: white;
 }
@@ -127,12 +154,12 @@
 #selectedBoxInDispensePage2{
 	-fx-border-color: black;
 	-fx-border-width: 2;
-	-fx-pref-widith: 1000;
-	-fx-pref-height: 800;
+	-fx-pref-widith: 900;
+	-fx-pref-height: 700;
 	-fx-min-widith: 1200;
-	-fx-max-height: 800;
+	-fx-max-height: 700;
 	-fx-font-family: "Helvetica";
-  	-fx-font-size: 35px;
+  	-fx-font-size: 32px;
     -fx-font-weight: bold;
 	-fx-background-color: white;
 }

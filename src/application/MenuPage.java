@@ -20,6 +20,7 @@ public class MenuPage extends BorderPane{
 	private Button toHomePage;
 	private Label[] foodFromRefillingPage = new Label[3];
 	private Button[] removeFoodFromRefillingPage = new Button[3];
+	private Label topMessage;
 	
 	
 	
@@ -58,13 +59,18 @@ public class MenuPage extends BorderPane{
 		toHomePage = new Button("Back");
 		toHomePage.setId("back");
 		toHomePage.getStyleClass().add("backButtons");
-	
+		
+		topMessage = new Label("Select one of the following to dispense");
+		topMessage.getStyleClass().add("menuTopMessage");
+		
 		// Setting for HBox
 		hbox.setPadding(new Insets(30, 0, 0, 50));
-		hbox.setSpacing(100);
+		hbox.setSpacing(500);
 		hbox.setAlignment(Pos.TOP_LEFT);
+
+		topMessage.setAlignment(Pos.TOP_CENTER);
 		
-		hbox.getChildren().addAll(toHomePage);
+		hbox.getChildren().addAll(toHomePage,topMessage);
 		setTop(hbox);
 	}
 	
