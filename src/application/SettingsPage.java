@@ -20,8 +20,8 @@ public class SettingsPage extends BorderPane {
 		Image image = new Image("backgroundPicture/alarmclock.jpg");
 		ImageView imageView = new ImageView(image);
 		
-		imageView.setFitHeight(700);
-		imageView.setFitWidth(1200);
+		imageView.setFitHeight(1000);
+		imageView.setFitWidth(1800);
 		imageView.setPreserveRatio(false);
 		imageView.setSmooth(true);
 		imageView.setCache(true);

@@ -39,8 +39,8 @@ public class RefillPage extends BorderPane{
 		ImageView imageView = new ImageView(image);
 		
 		// Setting for image view
-		imageView.setFitHeight(700);
-		imageView.setFitWidth(1200);
+		imageView.setFitHeight(1000);
+		imageView.setFitWidth(1800);
 		imageView.setPreserveRatio(false);
 		imageView.setSmooth(true);
 		imageView.setCache(true);
@@ -94,7 +94,7 @@ public class RefillPage extends BorderPane{
 		
 		scrollPane.setPadding(new Insets(0, 0, 0, 0));
 		
-		scrollPane.setMaxSize(710, 400);
+		scrollPane.setMaxSize(1000, 600);
 		
 		scrollPane.setContent(gridpane);
 		
@@ -138,9 +138,9 @@ public class RefillPage extends BorderPane{
 				
 		        ImageView imageView = new ImageView(image);
 		        
-				imageView.setFitHeight(200);
+				imageView.setFitHeight(300);
 				
-				imageView.setFitWidth(200);
+				imageView.setFitWidth(300);
 				
 				imageView.setPreserveRatio(false);
 				
@@ -170,9 +170,9 @@ public class RefillPage extends BorderPane{
 		
 		pictureOfSelected.setGraphic(imageView);
 		
-		imageView.setFitHeight(350);
+		imageView.setFitHeight(600);
 		
-		imageView.setFitWidth(220);
+		imageView.setFitWidth(400);
 		
 		imageView.setPreserveRatio(false);
 		
@@ -217,9 +217,9 @@ public class RefillPage extends BorderPane{
 		
 		pictureOfSelected.setGraphic(imageView);
 		
-		imageView.setFitHeight(350);
+		imageView.setFitHeight(600);
 		
-		imageView.setFitWidth(220);
+		imageView.setFitWidth(400);
 		
 		imageView.setPreserveRatio(false);
 		
