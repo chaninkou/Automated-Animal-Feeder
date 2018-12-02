@@ -72,7 +72,7 @@ public class RefillPage extends BorderPane{
 		HBox hbox = new HBox();
 		toMenuPage = new Button("Back");
 		toMenuPage.setId("back");
-	
+		toMenuPage.getStyleClass().add("backButtons");
 		
 		hbox.setPadding(new Insets(30, 0, 0, 50));
 		hbox.setSpacing(100);
@@ -188,8 +188,10 @@ public class RefillPage extends BorderPane{
 		
 		Label dailyFeeding = new Label("Daily Feeding: " + selectedPicture.getDailyFeeding() + " time(s) a day");
 		
+		
+		//Select Button
 		selectedButton = new Button("Select");
-	
+		selectedButton.getStyleClass().add("refillPageSelectButton");
 		VBox information = new VBox();
 		
 		information.getChildren().addAll(name, petKind, ingredient, dailyFeeding);
