@@ -5,17 +5,34 @@ import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 
 public class LoadingScreen extends BorderPane {
 	
 	private Button finished;
-	
+	private Label pleaseWait;
 	
 	public LoadingScreen(){
-		finished = new Button ("Click to finished");
 		
+		Image image = new Image("backgroundPicture/dogRunning.gif");
+		ImageView imageView = new ImageView(image);
+		
+		imageView.setFitHeight(1000);
+		imageView.setFitWidth(1800);
+		imageView.setPreserveRatio(false);
+		imageView.setSmooth(true);
+		imageView.setCache(true);
+		VBox pane = new VBox();
+		
+		pane.getChildren().add(imageView);
+
+		getChildren().add(pane);
+		
+		finished = new Button ("Click to finish");
+		finished.getStyleClass().add("finishedButton");
 	}
 	
 	public void loadingBar(int loadingTime){
@@ -47,8 +64,8 @@ public class LoadingScreen extends BorderPane {
 		};
 		
 		ProgressBar progressBar = new ProgressBar();
-		progressBar.setMinWidth(750);
-		progressBar.setMinHeight(60);
+		progressBar.setMinWidth(1700);
+		progressBar.setMinHeight(80);
 		progressBar.progressProperty().bind(task.progressProperty());
 		
 		// Need this or else it would never start
