@@ -1,5 +1,9 @@
 package application;
 
+import backend.FeedLogInformation;
+import backend.SelectedPetFood;
+import backend.DispenseSelection;
+import javafx.geometry.HPos;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
@@ -11,6 +15,8 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.TextAlignment;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.Label;
+import backend.FeedLogInformation;
+
 
 public class FeedingLogPage extends BorderPane{
 	private Button toMenuPage;
@@ -28,14 +34,17 @@ public class FeedingLogPage extends BorderPane{
 		VBox pane = new VBox();
 		
 		
-		
 		pane.getChildren().add(imageView);
 
 		getChildren().add(pane);
 		
-		
+		//Calls the function that displays the back button for mainpage//
 		topPart();
+		
+		//Calls function that displays out the scroll box for time outputs//
 		centerPart();
+		
+		//Calls function that displays out the "save" and Clear buttons//
 		bottomPart();
 	}
 	
@@ -44,6 +53,7 @@ public class FeedingLogPage extends BorderPane{
 		toMenuPage = new Button("Back");
 		toMenuPage.setId("back");
 		toMenuPage.getStyleClass().add("backButtons");
+
 		
 		
 		hbox.setPadding(new Insets(30, 0, 0, 50));
@@ -58,16 +68,14 @@ public class FeedingLogPage extends BorderPane{
 		VBox messageBox = new VBox();
 		VBox content = new VBox();
 		ScrollPane scroll = new ScrollPane();
-		Label testing = new Label("Testing");
+		Label testing = new Label("");
+		
 		
 		messageBox.getChildren().add(scroll);
-	
+		
 		content.getChildren().add(testing);
 		
-		for(int i = 2; i<45; i++) {
-			content.getChildren().add(new Label(i+"testing"));
-			
-		}
+		
 		scroll.setMaxSize(500,300);
 		scroll.setPrefSize(500,250);
 		scroll.setContent(content);
@@ -77,12 +85,39 @@ public class FeedingLogPage extends BorderPane{
 		
 	}
 	
+	public void updatedLog() {
+		VBox messageBox = new VBox();
+		VBox content = new VBox();
+		ScrollPane scroll = new ScrollPane();
+		
+		int size = FeedLogInformation.dispenseSelection.size();
+		Label testing;
+		DispenseSelection info;
+		for(int x = 0; x < size; x++) {
+		info = FeedLogInformation.dispenseSelection.get(x);
+		testing = new Label(info.getPetFood().getName() + info.getDate());
+		content.getChildren().add(testing);
+		}
+		messageBox.getChildren().add(scroll);
+		
+		//content.getChildren().add(testing);
 	
+		scroll.setMaxSize(500,300);
+		scroll.setPrefSize(500,250);
+		scroll.setContent(content);
+		
+		messageBox.setAlignment(Pos.CENTER);
+		setCenter(messageBox);
+		
+	}
 	
 	public void bottomPart() {
 		HBox bottomBox = new HBox();
+		//save button//
 		Button save = new Button("Save");
+		//clear button//
 		Button clear = new Button("Clear");
+		
 		bottomBox.setPadding(new Insets(0,30,30,0));
 		bottomBox.setSpacing(50);
 		bottomBox.setAlignment(Pos.BOTTOM_CENTER);
