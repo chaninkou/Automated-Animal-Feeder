@@ -21,8 +21,8 @@ public class WhatToDispensePage extends BorderPane{
 		Image image = new Image("backgroundPicture/menuPage.jpg");
 		ImageView imageView = new ImageView(image);
 		
-		imageView.setFitHeight(700);
-		imageView.setFitWidth(1200);
+		imageView.setFitHeight(1000);
+		imageView.setFitWidth(1800);
 		imageView.setPreserveRatio(false);
 		imageView.setSmooth(true);
 		imageView.setCache(true);
@@ -73,11 +73,11 @@ public class WhatToDispensePage extends BorderPane{
 			selectedBoxInMenu.setId("selectedBoxInDispensePage" + k);
 			
 			if(k == 0){
-				selectedBoxInMenu.setText("Please Press Refill for the 1st Pet Food");
+				selectedBoxInMenu.setText("Refill the 1st Pet Food");
 			}else if(k == 1){
-				selectedBoxInMenu.setText("Please Press Refill for the 2nd Pet Food");
+				selectedBoxInMenu.setText("Refill the 2nd Pet Food");
 			}else{
-				selectedBoxInMenu.setText("Please Press Refill for the 3rd Pet Food");
+				selectedBoxInMenu.setText("Refill the 3rd Pet Food");
 			}
 		
 			this.foodFromRefillingPage[k] = selectedBoxInMenu;
@@ -102,8 +102,8 @@ public class WhatToDispensePage extends BorderPane{
 				// Put the image to view
 				ImageView imageView = new ImageView(image);
 				
-				imageView.setFitHeight(200);
-				imageView.setFitWidth(200);
+				imageView.setFitHeight(600);
+				imageView.setFitWidth(400);
 				imageView.setPreserveRatio(false);
 				imageView.setSmooth(true);
 				imageView.setCache(true);
@@ -115,13 +115,13 @@ public class WhatToDispensePage extends BorderPane{
 			} else {
 				// Set the image to null and still display the rest of the image
 				if(k == 0){
-					foodFromRefillingPage[k].setText("Please Press Refill for the 1st Pet Food");
+					foodFromRefillingPage[k].setText("Refill the 1st Pet Food");
 					foodFromRefillingPage[k].setGraphic(null);
 				}else if(k == 1){
-					foodFromRefillingPage[k].setText("Please Press Refill for the 2nd Pet Food");
+					foodFromRefillingPage[k].setText("Refill the 2nd Pet Food");
 					foodFromRefillingPage[k].setGraphic(null);
 				}else{
-					foodFromRefillingPage[k].setText("Please Press Refill for the 3rd Pet Food");
+					foodFromRefillingPage[k].setText("Refill the 3rd Pet Food");
 					foodFromRefillingPage[k].setGraphic(null);
 				}
 			}

@@ -28,8 +28,8 @@ public class MenuPage extends BorderPane{
 		Image image = new Image("backgroundPicture/menuPage.jpg");
 		ImageView imageView = new ImageView(image);
 		
-		imageView.setFitHeight(700);
-		imageView.setFitWidth(1200);
+		imageView.setFitHeight(1000);
+		imageView.setFitWidth(1800);
 		imageView.setPreserveRatio(false);
 		imageView.setSmooth(true);
 		imageView.setCache(true);
@@ -57,7 +57,7 @@ public class MenuPage extends BorderPane{
 		// Back to home page button
 		toHomePage = new Button("Back");
 		toHomePage.setId("back");
-		
+		toHomePage.getStyleClass().add("backButtons");
 	
 		// Setting for HBox
 		hbox.setPadding(new Insets(30, 0, 0, 50));
@@ -84,11 +84,11 @@ public class MenuPage extends BorderPane{
 			selectedBoxInMenu.getStyleClass().add("selectedBoxInMenu");
 			selectedBoxInMenu.setId("selectedBoxInMenu" + k);
 			if(k == 0){
-				selectedBoxInMenu.setText("Please Press Refill for the 1st Pet Food");
+				selectedBoxInMenu.setText("Refill the 1st Pet Food");
 			}else if(k == 1){
-				selectedBoxInMenu.setText("Please Press Refill for the 2nd Pet Food");
+				selectedBoxInMenu.setText("Refill the 2nd Pet Food");
 			}else{
-				selectedBoxInMenu.setText("Please Press Refill for the 3rd Pet Food");
+				selectedBoxInMenu.setText("Refill the 3rd Pet Food");
 			}
 		
 			this.foodFromRefillingPage[k] = selectedBoxInMenu;
@@ -108,7 +108,7 @@ public class MenuPage extends BorderPane{
 
 		}
 		
-		hbox.setPadding(new Insets(150, 0, 0, 50));
+//		hbox.setPadding(new Insets(150, 10, 10, 50));
 		hbox.setSpacing(10);
 		hbox.setAlignment(Pos.TOP_CENTER);
 		
@@ -122,19 +122,19 @@ public class MenuPage extends BorderPane{
 		
 		// Making a refill button
 		refill = new Button("Refill");
-		refill.setId("refill");
+		refill.getStyleClass().add("menuPageButtons");
 		
 		// Making a storage button
 		storage = new Button("Storage");
-		storage.setId("storage");
+		storage.getStyleClass().add("menuPageButtons");
 		
 		// Making a feeding log button
 		feedingLog = new Button("Feeding Log");
-		feedingLog.setId("feedingLog");
+		feedingLog.getStyleClass().add("menuPageButtons");
 		
 		// Making a feeding log button
 		setting = new Button("Settings");
-		setting.setId("settings");
+		setting.getStyleClass().add("menuPageButtons");
 		
 		// Making a feeding log button
 		dispense = new Button("DISPENSE");
@@ -166,8 +166,8 @@ public class MenuPage extends BorderPane{
 				// Put the image to view
 				ImageView imageView = new ImageView(image);
 				
-				imageView.setFitHeight(200);
-				imageView.setFitWidth(200);
+				imageView.setFitHeight(600);
+				imageView.setFitWidth(400);
 				imageView.setPreserveRatio(false);
 				imageView.setSmooth(true);
 				imageView.setCache(true);
@@ -179,13 +179,13 @@ public class MenuPage extends BorderPane{
 			} else {
 				// Set the image to null and still display the rest of the image
 				if(k == 0){
-					foodFromRefillingPage[k].setText("Please Press Refill for the 1st Pet Food");
+					foodFromRefillingPage[k].setText("Refill the 1st Pet Food");
 					foodFromRefillingPage[k].setGraphic(null);
 				}else if(k == 1){
-					foodFromRefillingPage[k].setText("Please Press Refill for the 2nd Pet Food");
+					foodFromRefillingPage[k].setText("Refill the 2nd Pet Food");
 					foodFromRefillingPage[k].setGraphic(null);
 				}else{
-					foodFromRefillingPage[k].setText("Please Press Refill for the 3rd Pet Food");
+					foodFromRefillingPage[k].setText("Refill the 3rd Pet Food");
 					foodFromRefillingPage[k].setGraphic(null);
 				}
 			}

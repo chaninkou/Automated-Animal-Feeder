@@ -2,6 +2,8 @@ package application;
 
 import java.util.List;
 
+import application.Alarm;
+
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
@@ -20,8 +22,8 @@ public class SettingsPage extends BorderPane {
 		Image image = new Image("backgroundPicture/alarmclock.jpg");
 		ImageView imageView = new ImageView(image);
 		
-		imageView.setFitHeight(700);
-		imageView.setFitWidth(1200);
+		imageView.setFitHeight(1000);
+		imageView.setFitWidth(1800);
 		imageView.setPreserveRatio(false);
 		imageView.setSmooth(true);
 		imageView.setCache(true);
@@ -57,7 +59,7 @@ public class SettingsPage extends BorderPane {
 		
 		
 		// Making a refill button
-		timer = new Button("Set time to dispense.");
+		timer = new Button("Count Down.");
 		timer.setId("timer");
 		
 		dispenseDuration = new Button("Set time for the duration of the AAF dispensement.");
