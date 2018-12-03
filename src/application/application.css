@@ -34,6 +34,40 @@
     -fx-font-size: 15px;
     -fx-font-weight: bold;
 }
+.quitButton{
+	-fx-background-color: red;
+	-fx-padding: 10 10 10 10;
+	-fx-font-family: "Helvetica";
+    -fx-font-size: 15px;
+    -fx-font-weight: bold;
+}
+.dialog-pane {
+    -fx-background-color: black;
+}
+
+.dialog-pane .label {
+    -fx-text-fill: white;
+    -fx-font-size: 80px;
+    -fx-padding: 50;
+}
+
+.dialog-pane:header .header-panel {
+    -fx-background-color: black;
+}
+
+.dialog-pane:header .header-panel .label {
+    -fx-font-style: italic;
+    -fx-font-size: 100px;
+}
+.dialog-pane .button{
+   -fx-background-color:black;
+   -fx-text-fill:white;
+   -fx-wrap-text: true;
+   -fx-effect: dropshadow( three-pass-box, yellow, 40.0, 0.0, 0.0, 0.0);
+   -fx-cursor:hand;
+   -fx-font-size:80px;
+   -fx-padding: 50px;
+ }
 .menuPageButtons {
 	
 	-fx-padding: 50 50 50 50;
@@ -57,6 +91,14 @@
 	-fx-font-weight: bold;
 	-fx-border-color: black;
 }
+.settingPageButtons{
+	-fx-padding: 10 10 10 10;
+	-fx-font-family: "Helvetica";
+    -fx-font-size: 35px;
+    -fx-font-weight: bold;
+	
+}
+
 .title{
 	-fx-font-family: "Helvetica";
 	-fx-font-size: 70px;
