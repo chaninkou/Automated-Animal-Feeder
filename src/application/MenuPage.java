@@ -1,12 +1,21 @@
 package application;
 
+import java.util.Optional;
+
 import backend.SelectedPetFood;
+import javafx.event.Event;
+import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
+import javafx.scene.control.DialogPane;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -21,7 +30,7 @@ public class MenuPage extends BorderPane{
 	private Label[] foodFromRefillingPage = new Label[3];
 	private Button[] removeFoodFromRefillingPage = new Button[3];
 	private Label topMessage;
-	
+	private Button quitButton;
 	
 	
 	
@@ -59,18 +68,59 @@ public class MenuPage extends BorderPane{
 		toHomePage = new Button("Back");
 		toHomePage.setId("back");
 		toHomePage.getStyleClass().add("backButtons");
-		
+		//Top message
 		topMessage = new Label("Select one of the following to dispense");
 		topMessage.getStyleClass().add("menuTopMessage");
+		//To quit the program
+		quitButton = new Button("Exit");
+		quitButton.getStyleClass().add("quitButton");
+		
+		//quit event
+				quitButton.addEventHandler(MouseEvent.MOUSE_CLICKED,
+						new EventHandler<Event>() {
+					Boolean clicked = true;
+
+					@Override
+					public void handle(Event event) {
+						if (clicked == true) {	
+							Alert alert = new Alert(AlertType.CONFIRMATION);
+							alert.setTitle("Confirmation Dialog");
+							alert.setHeaderText("Do you really want to go?");
+							alert.setContentText("Are you ok with this?");
+							
+							DialogPane dialogPane = alert.getDialogPane();
+							dialogPane.getStylesheets().add(
+									   getClass().getResource("application.css").toExternalForm());
+							dialogPane.getStyleClass().add("dialog-pane");
+							
+							Optional<ButtonType> result = alert.showAndWait();
+							
+							
+							if (result.get() == ButtonType.OK){
+								quitButton.setText("Clicked");		
+								System.exit(1);
+							} else {
+							    // ... user chose CANCEL or closed the dialog
+							}
+						} 
+						else{
+						}
+
+					}
+				});
+		
+		
+		
+
 		
 		// Setting for HBox
 		hbox.setPadding(new Insets(30, 0, 0, 50));
 		hbox.setSpacing(500);
 		hbox.setAlignment(Pos.TOP_LEFT);
-
+		
 		topMessage.setAlignment(Pos.TOP_CENTER);
 		
-		hbox.getChildren().addAll(toHomePage,topMessage);
+		hbox.getChildren().addAll(toHomePage,topMessage,quitButton);
 		setTop(hbox);
 	}
 	

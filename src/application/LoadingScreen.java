@@ -16,7 +16,7 @@ public class LoadingScreen extends BorderPane {
 	private Label pleaseWait;
 	
 	public LoadingScreen(){
-		
+		//Gif of dog running.
 		Image image = new Image("backgroundPicture/dogRunning.gif");
 		ImageView imageView = new ImageView(image);
 		
