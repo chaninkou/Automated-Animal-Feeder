@@ -12,10 +12,13 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
 import javafx.scene.text.TextAlignment;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.Label;
 import backend.FeedLogInformation;
+import javafx.scene.layout.GridPane;
 
 
 public class FeedingLogPage extends BorderPane{
@@ -69,10 +72,13 @@ public class FeedingLogPage extends BorderPane{
 		VBox content = new VBox();
 		ScrollPane scroll = new ScrollPane();
 		Label testing = new Label("");
-		
-		
-		messageBox.getChildren().add(scroll);
-		
+		Label header_one = new Label("Brand");
+		Label header_two = new Label("Time");
+		HBox headers = new HBox();
+		headers.getChildren().addAll(header_one,header_two);
+		messageBox.getChildren().addAll(headers,scroll);
+		headers.setAlignment(Pos.CENTER);
+		headers.setSpacing(400);
 		content.getChildren().add(testing);
 		
 		
@@ -88,23 +94,33 @@ public class FeedingLogPage extends BorderPane{
 	public void updatedLog() {
 		VBox messageBox = new VBox();
 		VBox content = new VBox();
+		VBox content_right = new VBox();
+		HBox wrapper = new HBox();
 		ScrollPane scroll = new ScrollPane();
-		
+		Label header_one = new Label("Brand");
+		Label header_two = new Label("Time");
+		HBox headers = new HBox();
+		header_one.setFont(Font.font("Helvetica", 30));
+		headers.getChildren().addAll(header_one,header_two);
 		int size = FeedLogInformation.dispenseSelection.size();
 		Label testing;
 		DispenseSelection info;
 		for(int x = 0; x < size; x++) {
 		info = FeedLogInformation.dispenseSelection.get(x);
-		testing = new Label(info.getPetFood().getName() + info.getDate());
+		testing = new Label(info.getPetFood().getName());
 		content.getChildren().add(testing);
+		testing = new Label(""+info.getDate());
+		content_right.getChildren().add(testing);
 		}
-		messageBox.getChildren().add(scroll);
-		
+		content.setPadding(new Insets(0,70,0,0));
+		wrapper.getChildren().addAll(content,content_right);
+		messageBox.getChildren().addAll(headers,scroll);		
 		//content.getChildren().add(testing);
-	
+		headers.setAlignment(Pos.CENTER);
+		headers.setSpacing(400);
 		scroll.setMaxSize(500,300);
 		scroll.setPrefSize(500,250);
-		scroll.setContent(content);
+		scroll.setContent(wrapper);
 		
 		messageBox.setAlignment(Pos.CENTER);
 		setCenter(messageBox);
