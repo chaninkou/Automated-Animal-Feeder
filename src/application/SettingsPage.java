@@ -107,6 +107,7 @@ public class SettingsPage extends BorderPane {
 		
 		
 		
+		
 		dispenseDuration = new Button("Set time for the duration of the AAF dispensement.");
 		dispenseDuration.setId("dispenseDuration");
 		dispenseDuration.getStyleClass().add("settingPageButtons");
