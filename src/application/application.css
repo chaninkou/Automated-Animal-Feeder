@@ -47,7 +47,7 @@
 
 .dialog-pane .label {
     -fx-text-fill: white;
-    -fx-font-size: 80px;
+    -fx-font-size: 60px;
     -fx-padding: 50;
 }
 
@@ -57,7 +57,7 @@
 
 .dialog-pane:header .header-panel .label {
     -fx-font-style: italic;
-    -fx-font-size: 100px;
+    -fx-font-size: 70px;
 }
 .dialog-pane .button{
    -fx-background-color:black;
@@ -65,8 +65,8 @@
    -fx-wrap-text: true;
    -fx-effect: dropshadow( three-pass-box, yellow, 40.0, 0.0, 0.0, 0.0);
    -fx-cursor:hand;
-   -fx-font-size:80px;
-   -fx-padding: 50px;
+   -fx-font-size:50px;
+   -fx-padding: 10px;
  }
 .menuPageButtons {
 	
@@ -205,5 +205,3 @@
     -fx-font-weight: bold;
 	-fx-background-color: white;
 }
-
-

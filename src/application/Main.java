@@ -1,13 +1,24 @@
 package application;
 	
+import java.util.function.Supplier;
+
+import javax.swing.JDialog;
+import javax.swing.JOptionPane;
+
 import backend.FeedLogInformation;
 import backend.InformationRetrieve;
 import backend.SelectedPetFood;
 import javafx.application.Application;
+import javafx.event.Event;
+import javafx.event.EventHandler;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.DialogPane;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.image.Image;
+import javafx.scene.input.MouseEvent;
 
 
 public class Main extends Application {
@@ -67,7 +78,7 @@ public class Main extends Application {
 			feedingLogPageController(menuPage, scene, feedingLogPage);
 			
 			//Setting Page Controller
-			settingPageController(menuPage,scene,settingsPage);
+			settingPageController(menuPage,scene,settingsPage,feedingLogPage,feedLogInformation);
 			
 			// A controller for the loading screen page
 			loadingScreenController(scene, feedingLogPage, loadingScreen);
@@ -207,8 +218,53 @@ public class Main extends Application {
 	}
 	
 	// This is for settings page
-	public void settingPageController(MenuPage menuPage, Scene scene, SettingsPage settingsPage) {
+	public void settingPageController(MenuPage menuPage, Scene scene, SettingsPage settingsPage,FeedingLogPage feedingLogPage,FeedLogInformation feedLogInformation) {
 		settingsPage.getToMenuPage().setOnAction(e -> scene.setRoot(menuPage));
+		
+		settingsPage.timer.addEventHandler(MouseEvent.MOUSE_CLICKED,
+				new EventHandler<Event>() {
+			Boolean clicked = true;
+			@Override
+			public void handle(Event event) {
+				if (clicked == true) {	
+					
+					JOptionPane.showMessageDialog(
+			                 ((Supplier<JDialog>) () -> {final JDialog dialog = new JDialog(); dialog.setAlwaysOnTop(true); return dialog;}).get()
+			                 , "Enter your countdown Timer");	
+			       
+					int seconds =Integer.parseInt(JOptionPane.showInputDialog("Please enter in seconds"));
+					for(int i = seconds; i>=0; i--) {
+						try {
+							if(i >0) {
+								Thread.sleep(1000);
+								System.out.println(i);
+							}
+							else {
+								Alert alert = new Alert(AlertType.INFORMATION);
+								alert.setTitle("Information Dialog");
+								alert.setHeaderText(null);
+								alert.setContentText("AAF Will now Dispense");
+								
+								DialogPane dialogPane = alert.getDialogPane();
+								dialogPane.getStylesheets().add(
+										   getClass().getResource("application.css").toExternalForm());
+								dialogPane.getStyleClass().add("dialog-pane");
+								
+								
+								
+								
+								alert.showAndWait();
+								FeedLogInformation.addDispense(0);
+								feedingLogPage.updatedLog();
+							}
+						} catch (InterruptedException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}	
+					}
+				} 
+			}
+		});
 	}
 	
 	
