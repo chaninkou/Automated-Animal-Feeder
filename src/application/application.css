@@ -122,6 +122,12 @@
 	-fx-font-size: 40px;
 	-fx-font-weight: bold;
 }
+
+.feedlogmessage{
+	-fx-font-family: "Helvetica";
+	-fx-font-size: 30px;
+	-fx-font-weight: bold;
+}
 .timeMessage{
 	-fx-font-family: "Helvetica";
 	-fx-font-size: 35px;

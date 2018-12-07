@@ -68,30 +68,49 @@ public class FeedingLogPage extends BorderPane{
 	}
 	
 	public void centerPart() {
+		//This box is holding the scroll box//
 		VBox messageBox = new VBox();
+		
+		//left side content aka name of food Brand//
 		VBox content = new VBox();
+		
+		// Creating scroll box//
 		ScrollPane scroll = new ScrollPane();
+		
+		//testing is a label that is gonna be holding all the strings for the content boxes
 		Label testing = new Label("");
+		
+		//Labels "brand" and "time" indicate legends for content boxes//
 		Label header_one = new Label("Brand");
 		Label header_two = new Label("Time");
+		
+		//To display the "brand" and "time" headers horizontally
 		HBox headers = new HBox();
+		
+		
 		headers.getChildren().addAll(header_one,header_two);
+		header_one.getStyleClass().add("message");
+		header_two.getStyleClass().add("message");
 		messageBox.getChildren().addAll(headers,scroll);
 		headers.setAlignment(Pos.CENTER);
-		headers.setSpacing(400);
+		headers.setSpacing(650);
 		content.getChildren().add(testing);
 		
-		
-		scroll.setMaxSize(500,300);
-		scroll.setPrefSize(500,250);
+		//setting scroll box size//
+		scroll.setMaxSize(1000,2000);
+		scroll.setPrefSize(1000,2000);
 		scroll.setContent(content);
 		
+		messageBox.setPadding(new Insets(0,0,9,27));
 		messageBox.setAlignment(Pos.CENTER);
+		
+		//set at center location//
 		setCenter(messageBox);
 		
 	}
 	
 	public void updatedLog() {
+		//Same as the commments in the above//
 		VBox messageBox = new VBox();
 		VBox content = new VBox();
 		VBox content_right = new VBox();
@@ -100,28 +119,38 @@ public class FeedingLogPage extends BorderPane{
 		Label header_one = new Label("Brand");
 		Label header_two = new Label("Time");
 		HBox headers = new HBox();
-		header_one.setFont(Font.font("Helvetica", 30));
+		header_one.getStyleClass().add("message");
+		header_two.getStyleClass().add("message");
+	
 		headers.getChildren().addAll(header_one,header_two);
 		int size = FeedLogInformation.dispenseSelection.size();
 		Label testing;
 		DispenseSelection info;
+		//This loop gets conntent and adds to the content boxes//
 		for(int x = 0; x < size; x++) {
 		info = FeedLogInformation.dispenseSelection.get(x);
+		
 		testing = new Label(info.getPetFood().getName());
 		content.getChildren().add(testing);
+		testing.getStyleClass().add("feedlogmessage");
+		
 		testing = new Label(""+info.getDate());
+		testing.getStyleClass().add("feedlogmessage");
+
 		content_right.getChildren().add(testing);
+		
 		}
+		
 		content.setPadding(new Insets(0,70,0,0));
 		wrapper.getChildren().addAll(content,content_right);
 		messageBox.getChildren().addAll(headers,scroll);		
 		//content.getChildren().add(testing);
 		headers.setAlignment(Pos.CENTER);
-		headers.setSpacing(400);
-		scroll.setMaxSize(500,300);
-		scroll.setPrefSize(500,250);
+		headers.setSpacing(500);
+		scroll.setMaxSize(1000,2000);
+		scroll.setPrefSize(1000,2000);
 		scroll.setContent(wrapper);
-		
+		messageBox.setPadding(new Insets(0,0,9,27));
 		messageBox.setAlignment(Pos.CENTER);
 		setCenter(messageBox);
 		
@@ -134,7 +163,7 @@ public class FeedingLogPage extends BorderPane{
 		//clear button//
 		Button clear = new Button("Clear");
 		
-		bottomBox.setPadding(new Insets(0,30,30,0));
+		bottomBox.setPadding(new Insets(0,30,10,0));
 		bottomBox.setSpacing(50);
 		bottomBox.setAlignment(Pos.BOTTOM_CENTER);
 		bottomBox.getChildren().addAll(save,clear);
