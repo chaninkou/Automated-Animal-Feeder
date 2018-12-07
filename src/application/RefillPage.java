@@ -170,7 +170,7 @@ public class RefillPage extends BorderPane{
 		
 		pictureOfSelected.setGraphic(imageView);
 		
-		imageView.setFitHeight(600);
+		imageView.setFitHeight(500);
 		
 		imageView.setFitWidth(400);
 		
@@ -207,6 +207,7 @@ public class RefillPage extends BorderPane{
 		selectedInformation.setPadding(new Insets(10,50,10,10));
 		selectedInformation.setMinWidth(2);
 		
+		
 		return selectedInformation;
 	}
 	
@@ -219,7 +220,7 @@ public class RefillPage extends BorderPane{
 		
 		pictureOfSelected.setGraphic(imageView);
 		
-		imageView.setFitHeight(600);
+		imageView.setFitHeight(500);
 		
 		imageView.setFitWidth(400);
 		

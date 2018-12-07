@@ -3,6 +3,7 @@ package application;
 import backend.FeedLogInformation;
 import backend.InformationRetrieve;
 import backend.SelectedPetFood;
+import backend.storageInformation;
 import javafx.application.Application;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
@@ -16,7 +17,9 @@ public class Main extends Application {
 		try {
 			// Retrieve the information for pet food comment
 			InformationRetrieve.petFoodimport(InformationRetrieve.petFoodFilePath);
-			
+			for (int i = 0; i < storageInformation.petFoodListStorage.length; i++) {
+				storageInformation.setIndex(i, 0);
+			}
 			// Calling the home page
 			HomeStartPage homePage = new HomeStartPage();
 			
@@ -47,6 +50,7 @@ public class Main extends Application {
 			// Calling the dispense selection
 			FeedLogInformation feedLogInformation = new FeedLogInformation();
 			
+			
 			Scene scene = new Scene(homePage);
 			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			
@@ -58,7 +62,7 @@ public class Main extends Application {
 			menuPageController(menuPage, scene, homePage, refillPage, storagePage, feedingLogPage,settingsPage, whatToDispensePage);
 			
 			// Refill page
-			refillPageController(menuPage, scene, refillPage, whatToDispensePage);
+			refillPageController(storagePage, menuPage, scene, refillPage, whatToDispensePage);
 			
 			// Storage Page
 			storagePageController(menuPage, scene, storagePage);
@@ -73,7 +77,7 @@ public class Main extends Application {
 			loadingScreenController(scene, feedingLogPage, loadingScreen);
 			
 			// Controller for what to dispense page
-			whatToDispensePageController(menuPage, scene, loadingScreen, whatToDispensePage, foodFromRefillPageButton, feedLogInformation, feedingLogPage);
+			whatToDispensePageController(storagePage, menuPage, scene, loadingScreen, whatToDispensePage, foodFromRefillPageButton, feedLogInformation, feedingLogPage);
 			
 			primaryStage.setScene(scene);
 			primaryStage.setWidth(1800);
@@ -110,7 +114,6 @@ public class Main extends Application {
 	// This is for the menu page
 	public void menuPageController(MenuPage menuPage, Scene scene, HomeStartPage homePage, RefillPage refillPage, StoragePage storagePage, FeedingLogPage feedingLogPage,SettingsPage settings, WhatToDispensePage whatToDispensePage){
 			menuPage.getToHomePage().setOnAction(e -> scene.setRoot(homePage));
-			
 			// When user click refill button
 			menuPage.getToRefillPage().setOnAction(e -> {
 				scene.setRoot(refillPage);
@@ -139,9 +142,21 @@ public class Main extends Application {
 			// Making a array of delete button
 			Button[] deleteButtons = menuPage.getRemoveFoodFromRefillingPage();
 			
+//			menuPage.changeDefaultDisplayPetFood();
+//			whatToDispensePage.changeDefaultDisplayPetFood();
+//			scene.setRoot(menuPage);
+			
 			// If the first button was clicked, then delete first picture
 			if (deleteButtons[0] != null){
 				deleteButtons[0].setOnAction(event -> {
+					for (int i = 0; i < SelectedPetFood.petFoodList.size(); i++) {
+						if (SelectedPetFood.petFoodList.get(i).getName().equals(SelectedPetFood.petFoodArray[0].getName()))
+						{
+							storageInformation.setIndex(i, 0);
+							storagePage.getListButton()[i].setText(String.valueOf(storageInformation.getPetFoodStorage(i)) + "%"); 
+							break;
+						}
+					}
 					SelectedPetFood.deletePetFood(0);
 					
 					// Update the display of the pet food when user press delete on menu page
@@ -156,6 +171,14 @@ public class Main extends Application {
 			// If the second button was clicked, then delete first picture
 			if (deleteButtons[1] != null){
 				deleteButtons[1].setOnAction(event -> {
+					for (int i = 0; i < SelectedPetFood.petFoodList.size(); i++) {
+						if (SelectedPetFood.petFoodList.get(i).getName().equals(SelectedPetFood.petFoodArray[1].getName()))
+						{
+							storageInformation.setIndex(i, 0);
+							storagePage.getListButton()[i].setText(String.valueOf(storageInformation.getPetFoodStorage(i)) + "%"); 
+							break;
+						}
+					}
 					SelectedPetFood.deletePetFood(1);
 					
 					// Update the display of the pet food when user press delete on menu page
@@ -170,8 +193,15 @@ public class Main extends Application {
 			// If the third button was clicked, then delete first picture
 			if (deleteButtons[2] != null){
 				deleteButtons[2].setOnAction(event -> {
+					for (int i = 0; i < SelectedPetFood.petFoodList.size(); i++) {
+						if (SelectedPetFood.petFoodList.get(i).getName().equals(SelectedPetFood.petFoodArray[2].getName()))
+						{
+							storageInformation.setIndex(i, 0);
+							storagePage.getListButton()[i].setText(String.valueOf(storageInformation.getPetFoodStorage(i)) + "%"); 
+							break;
+						}
+					}
 					SelectedPetFood.deletePetFood(2);
-					
 					// Update the display of the pet food when user press delete on menu page
 					menuPage.changeDefaultDisplayPetFood();
 					
@@ -180,14 +210,39 @@ public class Main extends Application {
 					scene.setRoot(menuPage);
 				});
 			}
+			
+//			for (int i = 0; i < SelectedPetFood.petFoodArray.length; i++)
+//			{
+//				if (SelectedPetFood.petFoodArray[i] != null) {
+//					for (int j = 0; j < SelectedPetFood.petFoodList.size(); j++) 
+//					{
+//						if (SelectedPetFood.petFoodList.get(j).getName().equals(SelectedPetFood.petFoodArray[i].getName())) {
+//							if (storageInformation.getPetFoodStorage(j) <= 80) {
+//								System.out.println("Kevin -> " + j);
+//								SelectedPetFood.deletePetFood(i);
+//								break;
+//							}
+//						}
+//					}
+//				}
+//			}
+//			
+//			// Update the display of the pet food when user press delete on menu page
+//			menuPage.changeDefaultDisplayPetFood();
+//			
+//			// Update the display of the pet food in dispense page when user press delete on menu page
+//			whatToDispensePage.changeDefaultDisplayPetFood();
+//			scene.setRoot(menuPage);
 	}
 	
 	// This is for the refill page
-	public void refillPageController(MenuPage menuPage, Scene scene, RefillPage refillPage, WhatToDispensePage whatToDispensePage) {
+	public void refillPageController(StoragePage storagePage, MenuPage menuPage, Scene scene, RefillPage refillPage, WhatToDispensePage whatToDispensePage) {
 		refillPage.getToMenuPage().setOnAction(e -> scene.setRoot(menuPage));
 		refillPage.getSelectedButton().setOnAction(e -> {
 			SelectedPetFood.addPetFood(RefillPage.selectedPicture);
-			
+			storageInformation.refillPetFoodListStorage(RefillPage.selectedPicture);
+			int index = storageInformation.getIndex(RefillPage.selectedPicture);
+			storagePage.getListButton()[index].setText(String.valueOf(storageInformation.getPetFoodStorage(index)) + "%"); 
 			// Call this when user select pet food
 			menuPage.changeDefaultDisplayPetFood();
 			whatToDispensePage.changeDefaultDisplayPetFood();
@@ -220,7 +275,7 @@ public class Main extends Application {
 	}
 	
 	// Controller for what to dispense page
-	public void whatToDispensePageController(MenuPage menuPage, Scene scene,LoadingScreen loadingScreen, WhatToDispensePage whatToDispensePage, Button[] foodFromRefillPageButton, FeedLogInformation feedLogInformation, FeedingLogPage feedingLogPage) {
+	public void whatToDispensePageController(StoragePage storagePage, MenuPage menuPage, Scene scene,LoadingScreen loadingScreen, WhatToDispensePage whatToDispensePage, Button[] foodFromRefillPageButton, FeedLogInformation feedLogInformation, FeedingLogPage feedingLogPage) {
 		whatToDispensePage.getToMenuPage().setOnAction(e -> scene.setRoot(menuPage));
 		int loadingTime = 100000000;
 		
@@ -229,6 +284,15 @@ public class Main extends Application {
 			if(SelectedPetFood.petFoodArray[0] != null){
 				// Adding the first choice of pet food into the array list
 				FeedLogInformation.addDispense(0);
+				for (int i = 0; i < SelectedPetFood.petFoodList.size(); i++) {
+					if (SelectedPetFood.petFoodList.get(i).getName().equals(SelectedPetFood.petFoodArray[0].getName()))
+					{
+						storageInformation.dispensePetFoodStorage(i);
+						storagePage.getListButton()[i].setText(String.valueOf(storageInformation.getPetFoodStorage(i)) + "%");
+						if (storageInformation.getPetFoodStorage(i) < 0)
+							SelectedPetFood.deletePetFood(0);
+					}
+				}
 				feedingLogPage.updatedLog();
 				System.out.println(feedLogInformation.toString());
 				scene.setRoot(loadingScreen);
@@ -243,6 +307,15 @@ public class Main extends Application {
 			if(SelectedPetFood.petFoodArray[1] != null){
 				// Adding the second choice of pet food into the array list
 				FeedLogInformation.addDispense(1);
+				for (int i = 0; i < SelectedPetFood.petFoodList.size(); i++) {
+					if (SelectedPetFood.petFoodList.get(i).getName().equals(SelectedPetFood.petFoodArray[1].getName()))
+					{
+						storageInformation.dispensePetFoodStorage(i);
+						storagePage.getListButton()[i].setText(String.valueOf(storageInformation.getPetFoodStorage(i)) + "%");
+						if (storageInformation.getPetFoodStorage(i) < 0)
+							SelectedPetFood.deletePetFood(1);
+					}
+				}
 				feedingLogPage.updatedLog();
 				// Printing it out on console to check if its working
 				System.out.println(feedLogInformation.toString());
@@ -258,6 +331,15 @@ public class Main extends Application {
 			if(SelectedPetFood.petFoodArray[2] != null){
 				// Adding the third choice of pet food into the array list
 				FeedLogInformation.addDispense(2);
+				for (int i = 0; i < SelectedPetFood.petFoodList.size(); i++) {
+					if (SelectedPetFood.petFoodList.get(i).getName().equals(SelectedPetFood.petFoodArray[2].getName()))
+					{
+						storageInformation.dispensePetFoodStorage(i);
+						storagePage.getListButton()[i].setText(String.valueOf(storageInformation.getPetFoodStorage(i)) + "%");
+						if (storageInformation.getPetFoodStorage(i) < 0)
+							SelectedPetFood.deletePetFood(2);		
+					}
+				}
 				feedingLogPage.updatedLog();
 				// Printing it out on console to check if its working
 				System.out.println(feedLogInformation.toString());
