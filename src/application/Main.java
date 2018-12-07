@@ -233,40 +233,69 @@ public class Main extends Application {
 			                 , "Enter your countdown Timer");	
 			       
 					int seconds =Integer.parseInt(JOptionPane.showInputDialog("Please enter in seconds"));
-					for(int i = seconds; i>=0; i--) {
-						try {
-							if(i >0) {
-								Thread.sleep(1000);
-								System.out.println(i);
-							}
-							else {
-								Alert alert = new Alert(AlertType.INFORMATION);
-								alert.setTitle("Information Dialog");
-								alert.setHeaderText(null);
-								alert.setContentText("AAF Will now Dispense");
-								
-								DialogPane dialogPane = alert.getDialogPane();
-								dialogPane.getStylesheets().add(
-										   getClass().getResource("application.css").toExternalForm());
-								dialogPane.getStyleClass().add("dialog-pane");
-								
-								
-								
-								
-								alert.showAndWait();
-								FeedLogInformation.addDispense(0);
-								feedingLogPage.updatedLog();
-							}
-						} catch (InterruptedException e) {
-							// TODO Auto-generated catch block
-							e.printStackTrace();
-						}	
+					
+					timer(seconds,feedingLogPage,feedLogInformation);
+
 					}
-				} 
+				}
+				
 			}
-		});
+		);
 	}
-	
+	public void timer(int seconds , FeedingLogPage feedingLogPage, FeedLogInformation feedingLogInformation ) {
+		for(int i = seconds; i>=0; i--) {
+			try {
+				if(i >0) {
+					Thread.sleep(1000);
+					System.out.println(i);
+				}
+				else {
+					int foodChoice =Integer.parseInt(JOptionPane.showInputDialog("Please Enter The food to dispense: Only enter 1,2, or 3."));
+					
+					
+					if(foodChoice ==1) {
+						FeedLogInformation.addDispense(0);
+						feedingLogPage.updatedLog();			
+						
+					}
+					else if (foodChoice ==2) {
+						FeedLogInformation.addDispense(1);
+						feedingLogPage.updatedLog();
+					}
+					else if(foodChoice ==3) {
+						FeedLogInformation.addDispense(2);
+						feedingLogPage.updatedLog();	
+					}
+					else {
+						FeedLogInformation.addDispense(0);
+						feedingLogPage.updatedLog();
+					}
+					
+					Alert alert = new Alert(AlertType.INFORMATION);
+					alert.setTitle("Information Dialog");
+					alert.setHeaderText(null);
+					alert.setContentText("AAF Will now Dispense food " + foodChoice);
+					
+					DialogPane dialogPane = alert.getDialogPane();
+					dialogPane.getStylesheets().add(
+				    getClass().getResource("application.css").toExternalForm());
+					dialogPane.getStyleClass().add("dialog-pane");
+					
+					
+					alert.showAndWait();
+			
+					
+						
+					}
+
+					
+				}
+			catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+	}
 	
 	// This is the controller for the loading screen 
 	public void loadingScreenController(Scene scene, FeedingLogPage feedingLogPage, LoadingScreen loadingScreen){
