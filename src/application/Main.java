@@ -1,5 +1,6 @@
 package application;
 	
+import java.util.Optional;
 import java.util.function.Supplier;
 
 import javax.swing.JDialog;
@@ -16,6 +17,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.DialogPane;
+import javafx.scene.control.TextInputDialog;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
@@ -228,13 +230,36 @@ public class Main extends Application {
 			public void handle(Event event) {
 				if (clicked == true) {	
 					
-					JOptionPane.showMessageDialog(
-			                 ((Supplier<JDialog>) () -> {final JDialog dialog = new JDialog(); dialog.setAlwaysOnTop(true); return dialog;}).get()
-			                 , "Enter your countdown Timer");	
-			       
-					int seconds =Integer.parseInt(JOptionPane.showInputDialog("Please enter in seconds"));
-					
-					timer(seconds,feedingLogPage,feedLogInformation);
+//					JOptionPane.showMessageDialog(
+//			                 ((Supplier<JDialog>) () -> {final JDialog dialog = new JDialog(); dialog.setAlwaysOnTop(true); return dialog;}).get()
+//			                 , "Enter your countdown Timer");	
+//			       
+//					int seconds =Integer.parseInt(JOptionPane.showInputDialog("Please enter in seconds"));
+							
+							TextInputDialog dialog = new TextInputDialog("Countdown");
+
+							dialog.setTitle("Countdown!");
+							dialog.setHeaderText("Enter your time in seconds:");
+							dialog.setContentText("Seconds");
+							
+							
+							DialogPane dialogPane = dialog.getDialogPane();
+							dialogPane.getStylesheets().add(
+						    getClass().getResource("application.css").toExternalForm());
+							dialogPane.getStyleClass().add("dialog-pane");
+
+							Optional<String> result = dialog.showAndWait();
+							
+							Integer seconds = Integer.valueOf(result.get());
+							
+							result.ifPresent(Integer -> {
+								
+								timer(seconds,feedingLogPage,feedLogInformation);
+
+							  System.out.print(Integer);
+							});
+
+//					
 
 					}
 				}
@@ -250,7 +275,18 @@ public class Main extends Application {
 					System.out.println(i);
 				}
 				else {
-					int foodChoice =Integer.parseInt(JOptionPane.showInputDialog("Please Enter The food to dispense: Only enter 1,2, or 3."));
+					TextInputDialog dialog = new TextInputDialog("Countdown");
+					dialog.setTitle("Select your food choice!");
+					dialog.setHeaderText("Enter 1,2, or 3:");
+					dialog.setContentText("Enter Here");
+					
+					DialogPane dialogPane2 = dialog.getDialogPane();
+					dialogPane2.getStylesheets().add(
+				    getClass().getResource("application.css").toExternalForm());
+					dialogPane2.getStyleClass().add("dialog-pane");
+
+					Optional<String> result = dialog.showAndWait();
+					Integer foodChoice = Integer.valueOf(result.get());
 					
 					
 					if(foodChoice ==1) {
