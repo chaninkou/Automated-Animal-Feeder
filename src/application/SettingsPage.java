@@ -36,7 +36,7 @@ public class SettingsPage extends BorderPane {
 	private int counter;
 	
 	public SettingsPage(){
-		Image image = new Image("backgroundPicture/alarmclock.jpg");
+		Image image = new Image("backgroundPicture/dogsitting.jpg");
 		ImageView imageView = new ImageView(image);
 		
 		imageView.setFitHeight(1000);
@@ -79,7 +79,7 @@ public class SettingsPage extends BorderPane {
 		UIManager.put("TextField.font",new Font("Arial", Font.BOLD,45));
 		
 		// Making a refill button
-		timer = new Button("Count Down.");
+		timer = new Button("Timer");
 		timer.setId("timer");
 		timer.getStyleClass().add("settingPageButtons");
 		
