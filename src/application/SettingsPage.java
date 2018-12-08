@@ -22,6 +22,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.DialogPane;
+import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -61,12 +62,16 @@ public class SettingsPage extends BorderPane {
 		toMenuPage.setId("back");
 		toMenuPage.getStyleClass().add("backButtons");
 		
+		Label topMessage = new Label("Settings");
+		topMessage.getStyleClass().add("menuTopMessage");
 		
-		hbox.setPadding(new Insets(30, 0, 0, 50));
-		hbox.setSpacing(100);
+		
+		hbox.setPadding(new Insets(30, 0, 0, 80));
+		hbox.setSpacing(700);
 		hbox.setAlignment(Pos.TOP_LEFT);
 		
-		hbox.getChildren().addAll(toMenuPage);
+		topMessage.setAlignment(Pos.TOP_CENTER);
+		hbox.getChildren().addAll(toMenuPage,topMessage);
 		setTop(hbox);
 		
 	}
