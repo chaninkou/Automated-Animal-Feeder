@@ -14,6 +14,7 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.image.Image;
@@ -67,10 +68,16 @@ public class StoragePage extends BorderPane{
 		toMenuPage.getStyleClass().add("backButtons");
 		
 		hbox.setPadding(new Insets(30, 0, 0, 50));
-		hbox.setSpacing(100);
+		hbox.setSpacing(400);
 		hbox.setAlignment(Pos.TOP_LEFT);
+//		Label name = new Label("Storage Page");
 		
-		hbox.getChildren().addAll(toMenuPage);
+		Label dispence = new Label("Storage");
+		dispence.setId("storage");
+		dispence.getStyleClass().add("settingPageButtons");
+		
+		hbox.getChildren().addAll(toMenuPage, dispence);
+		
 		setTop(hbox);
 
 	}
