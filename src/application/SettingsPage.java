@@ -1,10 +1,19 @@
 package application;
 
-import java.util.List;
+import java.awt.Dimension;
+import java.awt.Font;
+
+import java.util.function.Supplier;
+
+import javax.swing.JDialog;
 
 import javax.swing.JOptionPane;
 
-import application.Alarm;
+import javax.swing.UIManager;
+
+import backend.FeedLogInformation;
+import backend.InformationRetrieve;
+import backend.SelectedPetFood;
 import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
@@ -12,6 +21,7 @@ import javafx.geometry.Pos;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
+import javafx.scene.control.DialogPane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -21,7 +31,7 @@ import javafx.scene.layout.VBox;
 
 public class SettingsPage extends BorderPane {
 	private Button toMenuPage;
-	private Button timer;
+	Button timer;
 	private Button dispenseDuration;
 	private int counter;
 	
@@ -64,52 +74,51 @@ public class SettingsPage extends BorderPane {
 	public void bottomPart(){
 		// Creating a HBox
 		HBox hbox = new HBox();
-		
+		UIManager.put("OptionPane.minimumSize",new Dimension(500,500)); 
+		UIManager.put("OptionPane.messageFont", new Font("Arial", Font.BOLD, 50));
+		UIManager.put("TextField.font",new Font("Arial", Font.BOLD,45));
 		
 		// Making a refill button
 		timer = new Button("Count Down.");
 		timer.setId("timer");
 		timer.getStyleClass().add("settingPageButtons");
 		
-		timer.addEventHandler(MouseEvent.MOUSE_CLICKED,
-				new EventHandler<Event>() {
-			Boolean clicked = true;
-
-			@Override
-			public void handle(Event event) {
-				if (clicked == true) {	
-
-					int seconds =Integer.parseInt(JOptionPane
-							.showInputDialog("Please enter the seconds"));
-					
-					for(int i = seconds; i>=0; i--) {
-						try {
-							if(i >0) {
-								Thread.sleep(1000);
-								System.out.println(i);
-							}
-							else {
-								Alert alert = new Alert(AlertType.INFORMATION);
-								alert.setTitle("Information Dialog");
-								alert.setHeaderText(null);
-								alert.setContentText("AAF Will now Dispense");
-								
-								alert.showAndWait();
-							}
-						} catch (InterruptedException e) {
-							// TODO Auto-generated catch block
-							e.printStackTrace();
-						}	
-					}
-				} 
-			}
-		});
+		
 		
 		
 		
 		dispenseDuration = new Button("Set time for the duration of the AAF dispensement.");
 		dispenseDuration.setId("dispenseDuration");
 		dispenseDuration.getStyleClass().add("settingPageButtons");
+		
+		dispenseDuration.addEventHandler(MouseEvent.MOUSE_CLICKED,
+				new EventHandler<Event>() {
+			Boolean clicked = true;
+
+			@Override
+			public void handle(Event event) {
+				if (clicked == true) {	
+					
+					JOptionPane.showMessageDialog(
+			                 ((Supplier<JDialog>) () -> {final JDialog dialog = new JDialog(); dialog.setAlwaysOnTop(true); return dialog;}).get()
+			                 , "Enter length of dispense");	
+			       
+					int timeOfDispense =Integer.parseInt(JOptionPane.showInputDialog("Please Dispense Time: 60 Seconds is the minimum"));
+					if(timeOfDispense>=60) {
+						
+					}
+					}
+				} 
+			
+		});
+		
+		
+		
+		
+		dispenseDuration = new Button("Set time for the duration of the AAF dispensement.");
+		dispenseDuration.setId("dispenseDuration");
+		dispenseDuration.getStyleClass().add("settingPageButtons");
+		
 		
 		hbox.setPadding(new Insets(0,0,30,0));
 		hbox.setSpacing(50);

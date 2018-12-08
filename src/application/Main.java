@@ -1,14 +1,27 @@
 package application;
 	
+import java.util.Optional;
+import java.util.function.Supplier;
+
+import javax.swing.JDialog;
+import javax.swing.JOptionPane;
+
 import backend.FeedLogInformation;
 import backend.InformationRetrieve;
 import backend.SelectedPetFood;
 import backend.storageInformation;
 import javafx.application.Application;
+import javafx.event.Event;
+import javafx.event.EventHandler;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.DialogPane;
+import javafx.scene.control.TextInputDialog;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.image.Image;
+import javafx.scene.input.MouseEvent;
 
 
 public class Main extends Application {
@@ -71,7 +84,7 @@ public class Main extends Application {
 			feedingLogPageController(menuPage, scene, feedingLogPage);
 			
 			//Setting Page Controller
-			settingPageController(menuPage,scene,settingsPage);
+			settingPageController(menuPage,scene,settingsPage,feedingLogPage,feedLogInformation);
 			
 			// A controller for the loading screen page
 			loadingScreenController(scene, feedingLogPage, loadingScreen);
@@ -262,10 +275,120 @@ public class Main extends Application {
 	}
 	
 	// This is for settings page
-	public void settingPageController(MenuPage menuPage, Scene scene, SettingsPage settingsPage) {
+	public void settingPageController(MenuPage menuPage, Scene scene, SettingsPage settingsPage,FeedingLogPage feedingLogPage,FeedLogInformation feedLogInformation) {
 		settingsPage.getToMenuPage().setOnAction(e -> scene.setRoot(menuPage));
+		
+		settingsPage.timer.addEventHandler(MouseEvent.MOUSE_CLICKED,
+				new EventHandler<Event>() {
+			Boolean clicked = true;
+			@Override
+			public void handle(Event event) {
+				if (clicked == true) {	
+					
+//					JOptionPane.showMessageDialog(
+//			                 ((Supplier<JDialog>) () -> {final JDialog dialog = new JDialog(); dialog.setAlwaysOnTop(true); return dialog;}).get()
+//			                 , "Enter your countdown Timer");	
+//			       
+//					int seconds =Integer.parseInt(JOptionPane.showInputDialog("Please enter in seconds"));
+							
+
+					TextInputDialog dialog3 = new TextInputDialog("Countdown");
+					dialog3.setTitle("Select your food choice!");
+					dialog3.setHeaderText("Enter 1,2, or 3:");
+					dialog3.setContentText("Enter Here");
+					
+					DialogPane dialogPane2 = dialog3.getDialogPane();
+					dialogPane2.getStylesheets().add(
+				    getClass().getResource("application.css").toExternalForm());
+					dialogPane2.getStyleClass().add("dialog-pane");
+
+					Optional<String> result2 = dialog3.showAndWait();
+					Integer foodChoice = Integer.valueOf(result2.get());
+					
+					
+					if(foodChoice ==1) {
+						FeedLogInformation.addDispense(0);
+						feedingLogPage.updatedLog();			
+						
+					}
+					else if (foodChoice ==2) {
+						FeedLogInformation.addDispense(1);
+						feedingLogPage.updatedLog();
+					}
+					else if(foodChoice ==3) {
+						FeedLogInformation.addDispense(2);
+						feedingLogPage.updatedLog();	
+					}
+					else {
+						FeedLogInformation.addDispense(0);
+						feedingLogPage.updatedLog();
+					}
+							
+							TextInputDialog dialog = new TextInputDialog("Countdown");
+
+							dialog.setTitle("Countdown!");
+							dialog.setHeaderText("Enter your time in seconds:");
+							dialog.setContentText("Seconds");
+							
+							
+							DialogPane dialogPane = dialog.getDialogPane();
+							dialogPane.getStylesheets().add(
+						    getClass().getResource("application.css").toExternalForm());
+							dialogPane.getStyleClass().add("dialog-pane");
+							
+
+							Optional<String> result = dialog.showAndWait();
+							
+							Integer seconds = Integer.valueOf(result.get());
+							
+							result.ifPresent(Integer -> {
+								
+								timer(seconds,feedingLogPage,feedLogInformation);
+
+							});
+
+//					
+
+					}
+				}
+				
+			}
+		);
 	}
-	
+	public void timer(int seconds , FeedingLogPage feedingLogPage, FeedLogInformation feedingLogInformation ) {
+		for(int i = seconds; i>=0; i--) {
+			try {
+				if(i >0) {
+					Thread.sleep(1000);
+					System.out.println(i);
+				}
+				else {
+					
+					Alert alert = new Alert(AlertType.INFORMATION);
+					alert.setTitle("Information Dialog");
+					alert.setHeaderText(null);
+					alert.setContentText("AAF Will now Dispense the selected food. ");
+					
+					DialogPane dialogPane = alert.getDialogPane();
+					dialogPane.getStylesheets().add(
+				    getClass().getResource("application.css").toExternalForm());
+					dialogPane.getStyleClass().add("dialog-pane");
+					
+					
+					alert.showAndWait();
+			
+					
+						
+					}
+
+					
+				}
+			catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+	}
 	
 	// This is the controller for the loading screen 
 	public void loadingScreenController(Scene scene, FeedingLogPage feedingLogPage, LoadingScreen loadingScreen){
