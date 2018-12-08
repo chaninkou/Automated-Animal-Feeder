@@ -9,6 +9,20 @@
 	    -fx-font-weight: bold;
 	
 }
+
+.deleteButtons{
+	-fx-font-size: 30px;
+}
+
+.progressBar {
+	-fx-accent: green;
+}
+
+.storagePagePercent{
+	 -fx-font-size: 40px;
+	 -fx-padding: 10 10 10 10; 
+}
+
 .dispense:hover {
     -fx-background-color: 
         linear-gradient(from 0% 93% to 0% 100%, #a34313 0%, #903b12 100%),

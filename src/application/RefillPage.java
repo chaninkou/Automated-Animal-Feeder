@@ -94,7 +94,7 @@ public class RefillPage extends BorderPane{
 		
 		scrollPane.setPadding(new Insets(0, 0, 0, 0));
 		
-		scrollPane.setMaxSize(1040, 600);
+		scrollPane.setMaxSize(1010, 600);
 		
 		scrollPane.setContent(gridpane);
 		

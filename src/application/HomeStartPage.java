@@ -37,7 +37,7 @@ public class HomeStartPage extends StackPane{
 		imageView.setCache(true);
 		
 		Label title = new Label("Automated Animal Feeder");
-		Label message = new Label("Welcome, press anywhere to start!");
+		Label message = new Label("Welcome, press anywhere to begin!");
 		title.getStyleClass().add("title");
 		message.getStyleClass().add("message");
 		
