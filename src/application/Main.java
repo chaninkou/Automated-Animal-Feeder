@@ -22,6 +22,8 @@ import javafx.scene.control.TextInputDialog;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 
 
 public class Main extends Application {
@@ -84,7 +86,7 @@ public class Main extends Application {
 			feedingLogPageController(menuPage, scene, feedingLogPage);
 			
 			//Setting Page Controller
-			settingPageController(menuPage,scene,settingsPage,feedingLogPage,feedLogInformation);
+			settingPageController(menuPage,scene,settingsPage,feedingLogPage,feedLogInformation,storagePage);
 			
 			// A controller for the loading screen page
 			loadingScreenController(scene, feedingLogPage, loadingScreen);
@@ -284,7 +286,7 @@ public class Main extends Application {
 	}
 	
 	// This is for settings page
-	public void settingPageController(MenuPage menuPage, Scene scene, SettingsPage settingsPage,FeedingLogPage feedingLogPage,FeedLogInformation feedLogInformation) {
+	public void settingPageController(MenuPage menuPage, Scene scene, SettingsPage settingsPage,FeedingLogPage feedingLogPage,FeedLogInformation feedLogInformation,StoragePage storagePage) {
 		settingsPage.getToMenuPage().setOnAction(e -> scene.setRoot(menuPage));
 		
 		settingsPage.timer.addEventHandler(MouseEvent.MOUSE_CLICKED,
@@ -304,7 +306,7 @@ public class Main extends Application {
 					TextInputDialog dialog3 = new TextInputDialog("Countdown");
 					dialog3.setTitle("Select your food choice!");
 					dialog3.setHeaderText("Enter 1,2, or 3:");
-					dialog3.setContentText("Enter Here");
+					dialog3.setContentText("Enter Here: (Default is 1)");
 					
 					DialogPane dialogPane2 = dialog3.getDialogPane();
 					dialogPane2.getStylesheets().add(
@@ -314,13 +316,18 @@ public class Main extends Application {
 					Optional<String> result2 = dialog3.showAndWait();
 					Integer foodChoice = Integer.valueOf(result2.get());
 					
+					if(foodChoice == null){
 					
-					if(foodChoice ==1) {
+					}
+					else if(foodChoice ==1) {
+						
+						
 						FeedLogInformation.addDispense(0);
 						feedingLogPage.updatedLog();			
 						
 					}
 					else if (foodChoice ==2) {
+						
 						FeedLogInformation.addDispense(1);
 						feedingLogPage.updatedLog();
 					}
@@ -328,6 +335,7 @@ public class Main extends Application {
 						FeedLogInformation.addDispense(2);
 						feedingLogPage.updatedLog();	
 					}
+				
 					else {
 						FeedLogInformation.addDispense(0);
 						feedingLogPage.updatedLog();
@@ -354,9 +362,7 @@ public class Main extends Application {
 								
 								timer(seconds,feedingLogPage,feedLogInformation);
 
-							});
-
-//					
+							});					
 
 					}
 				}
@@ -373,6 +379,7 @@ public class Main extends Application {
 				}
 				else {
 					
+					
 					Alert alert = new Alert(AlertType.INFORMATION);
 					alert.setTitle("Information Dialog");
 					alert.setHeaderText(null);
@@ -385,8 +392,6 @@ public class Main extends Application {
 					
 					
 					alert.showAndWait();
-			
-					
 						
 					}
 
