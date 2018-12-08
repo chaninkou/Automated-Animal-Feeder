@@ -114,6 +114,13 @@
     -fx-font-weight: bold;
 	
 }
+.settingTop{
+	-fx-text-fill: white;
+	-fx-font-family: "Helvetica";
+	-fx-font-size: 40px;
+	-fx-font-weight: bold;
+	
+}
 
 .title{
 	-fx-font-family: "Helvetica";

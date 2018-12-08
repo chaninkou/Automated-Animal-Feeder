@@ -63,7 +63,7 @@ public class SettingsPage extends BorderPane {
 		toMenuPage.getStyleClass().add("backButtons");
 		
 		Label topMessage = new Label("Settings");
-		topMessage.getStyleClass().add("menuTopMessage");
+		topMessage.getStyleClass().add("settingTop");
 		
 		
 		hbox.setPadding(new Insets(30, 0, 0, 80));
