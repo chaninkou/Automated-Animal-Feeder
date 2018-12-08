@@ -23,6 +23,8 @@ public class RefillPage extends BorderPane{
 	// This is a button for to menu page
 	private Button toMenuPage;
 	
+	private Label topMessage;
+	
 	private List<PetFood> petFoodList = SelectedPetFood.petFoodList;
 	
 	private VBox selectedInformation;
@@ -74,11 +76,17 @@ public class RefillPage extends BorderPane{
 		toMenuPage.setId("back");
 		toMenuPage.getStyleClass().add("backButtons");
 		
+		topMessage = new Label("Selection Page");
+		topMessage.setId("informationVBox");
+		topMessage.getStyleClass().add("informationVBox");
+		topMessage.setAlignment(Pos.CENTER);
+		
+		
 		hbox.setPadding(new Insets(30, 0, 0, 50));
-		hbox.setSpacing(100);
+		hbox.setSpacing(500);
 		hbox.setAlignment(Pos.TOP_LEFT);
 		
-		hbox.getChildren().addAll(toMenuPage);
+		hbox.getChildren().addAll(toMenuPage, topMessage);
 		setTop(hbox);
 	}
 	
