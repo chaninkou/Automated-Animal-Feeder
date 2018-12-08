@@ -68,7 +68,7 @@ public class StoragePage extends BorderPane{
 		toMenuPage.getStyleClass().add("backButtons");
 		
 		hbox.setPadding(new Insets(30, 0, 0, 50));
-		hbox.setSpacing(400);
+		hbox.setSpacing(700);
 		hbox.setAlignment(Pos.TOP_LEFT);
 //		Label name = new Label("Storage Page");
 		
