@@ -67,14 +67,16 @@ public class FeedingLogPage extends BorderPane{
 		toMenuPage = new Button("Back");
 		toMenuPage.setId("back");
 		toMenuPage.getStyleClass().add("backButtons");
-
-		
+		Label title_head = new Label("Feeding Log Page");
+		title_head.getStyleClass().add("message");
+		HBox headbox = new HBox();
 		
 		hbox.setPadding(new Insets(30, 0, 0, 50));
-		hbox.setSpacing(100);
+		hbox.setSpacing(600);
 		hbox.setAlignment(Pos.TOP_LEFT);
 		
-		hbox.getChildren().addAll(toMenuPage);
+		hbox.getChildren().addAll(toMenuPage,title_head);
+		title_head.setAlignment(Pos.TOP_RIGHT);
 		setTop(hbox);
 	}
 	
