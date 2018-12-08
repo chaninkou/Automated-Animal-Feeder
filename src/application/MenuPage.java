@@ -69,7 +69,7 @@ public class MenuPage extends BorderPane{
 		toHomePage.setId("back");
 		toHomePage.getStyleClass().add("backButtons");
 		//Top message
-		topMessage = new Label("Select one of the following to dispense");
+		topMessage = new Label("Press select to choose which pet food and press dispense when ready");
 		topMessage.getStyleClass().add("menuTopMessage");
 		//To quit the program
 		quitButton = new Button("Exit");
@@ -115,7 +115,7 @@ public class MenuPage extends BorderPane{
 		
 		// Setting for HBox
 		hbox.setPadding(new Insets(30, 0, 0, 50));
-		hbox.setSpacing(500);
+		hbox.setSpacing(220);
 		hbox.setAlignment(Pos.TOP_LEFT);
 		
 		topMessage.setAlignment(Pos.TOP_CENTER);
@@ -140,11 +140,11 @@ public class MenuPage extends BorderPane{
 			selectedBoxInMenu.getStyleClass().add("selectedBoxInMenu");
 			selectedBoxInMenu.setId("selectedBoxInMenu" + k);
 			if(k == 0){
-				selectedBoxInMenu.setText("Refill the 1st Pet Food");
+				selectedBoxInMenu.setText(" Select the 1st Pet Food  ");
 			}else if(k == 1){
-				selectedBoxInMenu.setText("Refill the 2nd Pet Food");
+				selectedBoxInMenu.setText(" Select the 2nd Pet Food  ");
 			}else{
-				selectedBoxInMenu.setText("Refill the 3rd Pet Food");
+				selectedBoxInMenu.setText(" Select the 3rd Pet Food  ");
 			}
 		
 			this.foodFromRefillingPage[k] = selectedBoxInMenu;
@@ -164,7 +164,7 @@ public class MenuPage extends BorderPane{
 
 		}
 		
-//		hbox.setPadding(new Insets(150, 10, 10, 50));
+		hbox.setPadding(new Insets(20, 10, 10, 50));
 		hbox.setSpacing(10);
 		hbox.setAlignment(Pos.TOP_CENTER);
 		
@@ -177,7 +177,7 @@ public class MenuPage extends BorderPane{
 		
 		
 		// Making a refill button
-		refill = new Button("Refill");
+		refill = new Button("Select");
 		refill.getStyleClass().add("menuPageButtons");
 		
 		// Making a storage button
@@ -235,13 +235,13 @@ public class MenuPage extends BorderPane{
 			} else {
 				// Set the image to null and still display the rest of the image
 				if(k == 0){
-					foodFromRefillingPage[k].setText("Refill the 1st Pet Food");
+					foodFromRefillingPage[k].setText(" Select the 1st Pet Food  ");
 					foodFromRefillingPage[k].setGraphic(null);
 				}else if(k == 1){
-					foodFromRefillingPage[k].setText("Refill the 2nd Pet Food");
+					foodFromRefillingPage[k].setText(" Select the 2nd Pet Food  ");
 					foodFromRefillingPage[k].setGraphic(null);
 				}else{
-					foodFromRefillingPage[k].setText("Refill the 3rd Pet Food");
+					foodFromRefillingPage[k].setText(" Select the 3rd Pet Food  ");
 					foodFromRefillingPage[k].setGraphic(null);
 				}
 			}
