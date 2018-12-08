@@ -155,6 +155,15 @@ public class Main extends Application {
 			// Making a array of delete button
 			Button[] deleteButtons = menuPage.getRemoveFoodFromRefillingPage();
 			
+			deleteButtons[0].setId("deleteButtons");
+			deleteButtons[0].getStyleClass().add("deleteButtons");
+			
+			deleteButtons[1].setId("deleteButtons");
+			deleteButtons[1].getStyleClass().add("deleteButtons");
+			
+			deleteButtons[2].setId("deleteButtons");
+			deleteButtons[2].getStyleClass().add("deleteButtons");
+			
 //			menuPage.changeDefaultDisplayPetFood();
 //			whatToDispensePage.changeDefaultDisplayPetFood();
 //			scene.setRoot(menuPage);
@@ -417,7 +426,6 @@ public class Main extends Application {
 					}
 				}
 				feedingLogPage.updatedLog();
-				System.out.println(feedLogInformation.toString());
 				scene.setRoot(loadingScreen);
 				
 				// This is for the time it loads

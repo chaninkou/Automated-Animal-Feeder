@@ -68,6 +68,10 @@ public class LoadingScreen extends BorderPane {
 		progressBar.setMinHeight(80);
 		progressBar.progressProperty().bind(task.progressProperty());
 		
+		// Styling the progress bar
+		progressBar.setId("progressBar");
+		progressBar.getStyleClass().add("progressBar");
+		
 		// Need this or else it would never start
 		new Thread(task).start();
 		

@@ -116,6 +116,8 @@ public class StoragePage extends BorderPane{
 //				int x = storageInformation.getIndex(index);
 //				temp.setText(String.valueOf(x) + "%");
 				listButton[index] = temp;
+				temp.setId("storagePagePercent");
+				temp.getStyleClass().add("storagePagePercent");
 				
 //				temp.setText(String.valueOf(listButton[index]) + "%");
 //				listButton[index] = Integer.parseInt(temp.getText().substring(0, temp.getText().length() - 1));
@@ -177,9 +179,9 @@ public class StoragePage extends BorderPane{
 		
 		scrollPane.setHbarPolicy(ScrollPane.ScrollBarPolicy.AS_NEEDED);
 		
-		scrollPane.setPadding(new Insets(0, 0, 0, 0));
+		scrollPane.setPadding(new Insets(10, 10, 10, 100));
 		
-		scrollPane.setMaxSize(1150, 600);
+		scrollPane.setMaxSize(1400, 600);
 		
 		scrollPane.setContent(gridpane);
 		
