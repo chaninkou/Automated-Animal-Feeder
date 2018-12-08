@@ -83,41 +83,7 @@ public class SettingsPage extends BorderPane {
 		timer.setId("timer");
 		timer.getStyleClass().add("settingPageButtons");
 		
-		
-		
-		
-		
-		dispenseDuration = new Button("Set time for the duration of the AAF dispensement.");
-		dispenseDuration.setId("dispenseDuration");
-		dispenseDuration.getStyleClass().add("settingPageButtons");
-		
-		dispenseDuration.addEventHandler(MouseEvent.MOUSE_CLICKED,
-				new EventHandler<Event>() {
-			Boolean clicked = true;
 
-			@Override
-			public void handle(Event event) {
-				if (clicked == true) {	
-					
-					JOptionPane.showMessageDialog(
-			                 ((Supplier<JDialog>) () -> {final JDialog dialog = new JDialog(); dialog.setAlwaysOnTop(true); return dialog;}).get()
-			                 , "Enter length of dispense");	
-			       
-					int timeOfDispense =Integer.parseInt(JOptionPane.showInputDialog("Please Dispense Time: 60 Seconds is the minimum"));
-					if(timeOfDispense>=60) {
-						
-					}
-					}
-				} 
-			
-		});
-		
-		
-		
-		
-		dispenseDuration = new Button("Set time for the duration of the AAF dispensement.");
-		dispenseDuration.setId("dispenseDuration");
-		dispenseDuration.getStyleClass().add("settingPageButtons");
 		
 		
 		hbox.setPadding(new Insets(0,0,30,0));
@@ -127,7 +93,7 @@ public class SettingsPage extends BorderPane {
 		hbox.setAlignment(Pos.CENTER);
 		
 		// Adding all the children
-		hbox.getChildren().addAll(timer,dispenseDuration);
+		hbox.getChildren().addAll(timer);
 		
 		// Need this to set it to the bottom of the GUI
 		setBottom(hbox);
